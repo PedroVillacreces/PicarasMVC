@@ -1,9 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
+﻿/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -22,3 +17,79 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar-fixed-left {
+    width: 300px;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+    border: none;
+    background-color: darkslategray;
+    margin-top: 50px;
+}
+
+.navbar-fixed-left .navbar-nav > li {
+    float: none;  /* Cancel default li float: left */
+    width: 100%;
+}
+
+    .navbar-fixed-left .navbar-nav > li > a {
+       width: 100%;
+        margin-left: 30px;
+        color: cornsilk;
+    }
+
+.navbar-fixed-left .navbar-nav > li > a:before {
+    margin-right: 20px;
+    font-size: 1.7em;
+}
+.navbar-fixed-left + .container {
+    padding-left: 160px;
+}
+
+/* On using dropdown menu (To right shift popuped) */
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+    margin-top: -50px;
+    margin-left: 140px;
+}
+
+.nav-top {
+    padding-bottom: 0 !important;
+    margin-bottom: 0;
+    border-radius: 0;
+    border: none;
+    background-color: darkslategray;
+    color: cornsilk;
+}
+
+    .nav-top > li > a {
+        color: cornsilk;
+    }
+
+.brand-admin {
+    background-color: aqua;
+    padding: 15px;
+    border-color: aqua;
+}
+
+.left-container {
+    margin: 0;
+    padding: 0;
+}
+.btn-about {
+    background-color: darkslategray;
+    color: white;
+    margin-bottom: 1%;
+}
+
+.jumbotron {
+    margin-top: 100px;
+}
+
+.margin-container {
+    margin-top: 15%;
+}
+.btn-product {
+    width: 45px;
+}
+

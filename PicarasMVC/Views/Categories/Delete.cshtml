@@ -4,17 +4,9 @@
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Eliminar</title>
-</head>
-<body>
-    <h3>EStás seguro de que lo quieres eliminar</h3>
-    <div>
-        <h4>Category</h4>
+    <h3>Estás seguro de que lo quieres eliminar</h3>
+    <div class="margin-container">
+        <h4>Eliminar Categoría</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -39,10 +31,9 @@ Layout = "~/Views/Shared/_Layout.cshtml";
             @Html.AntiForgeryToken()
     
             <div class="form-actions no-color">
-                <input type="submit" value="Borrar" class="btn btn-default" /> |
-                @Html.ActionLink("Volver a la lista", "Index")
+                <input type="submit" value="Borrar" class="btn btn-danger" />
+                @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-success" })
             </div>
         }
     </div>
-</body>
-</html>
+

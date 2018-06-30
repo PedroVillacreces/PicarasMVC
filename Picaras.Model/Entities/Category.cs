@@ -8,7 +8,7 @@ namespace Picaras.Model.Entities
         public int CategoryId { get; set; }
         [MaxLength(50)]
         [Required]
-        [Display(Name = "Nombre")]
+        [Display(Name = "Categoría")]
         public string Name { get; set; }
         [MaxLength(500)]
         [Display(Name = "Descripción")]

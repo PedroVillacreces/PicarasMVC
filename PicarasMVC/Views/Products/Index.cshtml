@@ -4,16 +4,9 @@
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
+<div class="margin-container">
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Crear nuevo producto", "Create", null, new {@class="btn btn-about"})
     </p>
     <table class="table">
         <tr>
@@ -50,52 +43,52 @@ Layout = "~/Views/Shared/_Layout.cshtml";
             <th>
                 @Html.DisplayNameFor(model => model.IsOutlet)
             </th>
-            <th></th>
+            <th>Botones acciones navegación</th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subcategory.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Picture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDateTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OldPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsOutlet)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subcategory.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Picture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OldPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsOutlet)
+                </td>
+                <td style="width: 100%">
+                    @Html.ActionLink(" ", "Edit", new { id = item.ProductId }, new { @class = "btn btn-warning btn-product fas fa-edit" })
+                    @Html.ActionLink(" ", "Details", new { id = item.ProductId }, new { @class = "btn btn-info btn-product fas fa-info" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger btn-product fas fa-trash-alt" })
+                </td>
+            </tr>
+        }
+
     </table>
-</body>
-</html>
+</div>

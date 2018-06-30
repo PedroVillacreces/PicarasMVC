@@ -9,7 +9,7 @@
         public int SubcategoryId { get; set; }
         [Required]
         [MaxLength(30)]
-        [Display(Name = "Nombre")]
+        [Display(Name = "Subcategoría")]
         public string Name { get; set; }
         [Required]
         [MaxLength(500)]

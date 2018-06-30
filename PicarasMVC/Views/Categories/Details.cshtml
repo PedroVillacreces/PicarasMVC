@@ -4,16 +4,8 @@
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Detalles</title>
-</head>
-<body>
-    <div>
-        <h4>Categoría</h4>
+    <div class="margin-container ">
+        <h4>Detalles de Categoría</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -35,8 +27,6 @@ Layout = "~/Views/Shared/_Layout.cshtml";
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.CategoryId }) |
-        @Html.ActionLink("Volver a la lista", "Index")
+        @Html.ActionLink("Editar", "Edit", new { id = Model.CategoryId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-success" })
     </p>
-</body>
-</html>

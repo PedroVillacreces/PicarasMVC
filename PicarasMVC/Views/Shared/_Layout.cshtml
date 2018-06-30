@@ -6,44 +6,47 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-left">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Administración Pícaras", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse navbar-fixed-left" >
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Categorías", "Index", "Categories")></li>
-                    <li>@Html.ActionLink("SubCategorías", "Index", "SubCategories")></li>
-                    <li>@Html.ActionLink("Productos", "Index", "Products")></li>
-                    <li>@Html.ActionLink("Clientes", "Index", "Customers")></li>
-                    <li>@Html.ActionLink("Agencias de Transporte", "Index", "AgentTransports")></li>
-                    <li>@Html.ActionLink("Pedidos", "Index", "Orders")></li>
-                    <li>@Html.ActionLink("Administrar Slider", "Index", "AdminSliders")></li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top nav-top">
+        @Html.Partial("_LoginPartial")
+    </nav>
+<div class="navbar navbar-inverse navbar-fixed-left">
+    <div class="container left-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Administración Pícaras", "Index", "Home", new {area = ""}, new {@class = "navbar-brand brand-admin"})
         </div>
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Inicio", "Index", "Home", null, new{@class= "fas fa-archway" })</li>
+            <li>@Html.ActionLink("Categorías", "Index", "Categories", null, new {@class= "fas fa-clipboard-list" })</li>
+            <li>@Html.ActionLink("SubCategorías", "Index", "SubCategories", null, new {@class= "fas fa-project-diagram" })</li>
+            <li>@Html.ActionLink("Productos", "Index", "Products", null, new {@class= "fas fa-tshirt" })</li>
+            <li>@Html.ActionLink("Clientes", "Index", "Customers", null, new {@class= "fas fa-people-carry" })</li>
+            <li>@Html.ActionLink("Agencias de Transporte", "Index", "AgentTransports", null, new {@class= "fas fa-shuttle-van" })</li>
+            <li>@Html.ActionLink("Pedidos", "Index", "Orders", null, new{@class= "fas fa-dolly" })</li>
+            <li>@Html.ActionLink("Administracion Slider", "Index", "AdminSliders", null, new {@class= "fab fa-slideshare" })</li>
+        </ul>
+        
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Picaras Closet</p>
+    </footer>
+</div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/jqueryval")
+@RenderSection("scripts", required: false)
 </body>
 </html>
