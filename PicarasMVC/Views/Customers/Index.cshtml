@@ -3,17 +3,9 @@
 @{
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
+    <div class="margin-container">
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Crear nuevo producto", "Create", null, new { @class = "btn btn-about" })
     </p>
     <table class="table">
         <tr>
@@ -47,7 +39,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th></th>
+            <th>Botones acciones navegación</th>
         </tr>
     
     @foreach (var item in Model) {
@@ -83,13 +75,13 @@ Layout = "~/Views/Shared/_Layout.cshtml";
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
+                @Html.ActionLink(" ", "Edit", new { id=item.CustomerId }, new { @class = "btn btn-warning btn-product fas fa-edit" })
+                @Html.ActionLink(" ", "Details", new { id=item.CustomerId }, new { @class = "btn btn-info btn-product fas fa-info" })
+                @Html.ActionLink(" ", "Delete", new { id=item.CustomerId }, new { @class = "btn btn-danger btn-product fas fa-trash-alt" })
             </td>
         </tr>
     }
     
     </table>
-</body>
-</html>
+    </div>
+

@@ -1,19 +1,10 @@
 ﻿@model Picaras.Model.Entities.Customer
 
 @{
-    Layout = null;
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Customer</h4>
+    <div class="margin-container">
+        <h4>Detalles del Cliente</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -99,8 +90,6 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Editar", "Edit", new { id = Model.CustomerId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-success" })
     </p>
-</body>
-</html>

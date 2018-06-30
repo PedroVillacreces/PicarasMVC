@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
@@ -50,6 +51,7 @@ namespace PicarasMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                product.CreateDateTime = DateTime.Now;
                 _db.Products.Add(product);
                 await _db.SaveChangesAsync().ConfigureAwait(false);
                 return RedirectToAction("Index");

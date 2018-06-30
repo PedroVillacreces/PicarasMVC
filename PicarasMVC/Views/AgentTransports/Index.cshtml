@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<Picaras.Model.Entities.AgentTransport>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Agencias";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+<div class="margin-container">
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nueva Agencia", "Create", null, new { @class = "btn btn-about" })
 </p>
 <table class="table">
     <tr>
@@ -30,11 +29,12 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AgentTransportId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AgentTransportId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AgentTransportId })
+            @Html.ActionLink(" ", "Edit", new { id=item.AgentTransportId }, new { @class = "btn btn-warning btn-product fas fa-edit" })
+            @Html.ActionLink(" ", "Details", new { id=item.AgentTransportId }, new { @class = "btn btn-info btn-product fas fa-info" })
+            @Html.ActionLink(" ", "Delete", new { id=item.AgentTransportId }, new { @class = "btn btn-danger btn-product fas fa-trash-alt" })
         </td>
     </tr>
 }
 
 </table>
+</div>
