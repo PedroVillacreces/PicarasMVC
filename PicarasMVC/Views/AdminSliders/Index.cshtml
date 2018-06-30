@@ -1,46 +1,47 @@
 ﻿@model IEnumerable<Picaras.Model.Entities.AdminSlider>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Slider";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="margin-container">
+    <p>
+        @Html.ActionLink("Crear nuevo Slide", "Create", null, new { @class = "btn btn-about" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.AdminSliderId }, new { @class = "btn btn-warning btn-product fas fa-edit" })
+                    @Html.ActionLink(" ", "Details", new { id = item.AdminSliderId }, new { @class = "btn btn-info btn-product fas fa-info" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.AdminSliderId }, new { @class = "btn btn-danger btn-product fas fa-trash-alt" })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AdminSliderId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AdminSliderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AdminSliderId })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+</div>
