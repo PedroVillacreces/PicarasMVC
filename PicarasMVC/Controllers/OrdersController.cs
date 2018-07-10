@@ -12,6 +12,7 @@ using Picaras.Model.Entities;
 
 namespace PicarasMVC.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private PicarasModel db = new PicarasModel();

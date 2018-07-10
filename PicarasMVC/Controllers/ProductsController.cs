@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Data.Entity;
+using System.IO;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
 using Picaras.Model;
 using Picaras.Model.Entities;
+using System.Web;
 
 namespace PicarasMVC.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly PicarasModel _db = new PicarasModel();
@@ -51,7 +54,24 @@ namespace PicarasMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                product.CreateDateTime = DateTime.Now;
+                var fileContent = Request.Files["Picture"];
+                if (fileContent != null)
+                {
+                    var stream = fileContent.InputStream;
+                    var fileName = Path.GetFileName(fileContent.FileName);
+                    if (fileName != null)
+                    {
+                        var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                        using (var fileStream = System.IO.File.Create(path))
+                        {
+                            await stream.CopyToAsync(fileStream).ConfigureAwait(false);
+                        }
+                    }
+
+                    product.CreateDateTime = DateTime.Now;
+                    product.Picture = $"~/Content/Images/{fileName}";
+                }
+
                 _db.Products.Add(product);
                 await _db.SaveChangesAsync().ConfigureAwait(false);
                 return RedirectToAction("Index");
@@ -84,10 +104,26 @@ namespace PicarasMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductId,Name,Description,Quantity,Active,Price,Picture,CreateDateTime,OldPrice,CategoryId,SubcategoryId,IsOutlet")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductId,Name,Description,Quantity,Active,Price,Picture,OldPrice,CategoryId,SubcategoryId,IsOutlet")] Product product)
         {
             if (ModelState.IsValid)
             {
+                var fileContent = Request.Files["Picture"];
+                if (fileContent != null)
+                {
+                    var stream = fileContent.InputStream;
+                    var fileName = Path.GetFileName(fileContent.FileName);
+                    if (fileName != null)
+                    {
+                        var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                        using (var fileStream = System.IO.File.Create(path))
+                        {
+                            await stream.CopyToAsync(fileStream).ConfigureAwait(false);
+                        }
+                    }
+                    product.Picture = $"~/Content/Images/{fileName}";
+                    product.CreateDateTime = DateTime.Now;
+                }
                 _db.Entry(product).State = EntityState.Modified;
                 await _db.SaveChangesAsync().ConfigureAwait(false);
                 return RedirectToAction("Index");

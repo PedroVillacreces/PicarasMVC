@@ -28,14 +28,14 @@ namespace PicarasMVC.Models
     public class SetPasswordViewModel
     {
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "El {0} debe ser de al menos {2} caracteres de longitud.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nuevo password")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Confirmar nuevo password")]
+        [Compare("NewPassword", ErrorMessage = "Las contraseñas introducidas con coinciden.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -43,18 +43,18 @@ namespace PicarasMVC.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Password Actual")]
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "El {0} debe ser de al menos {2} caracteres de longitud.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nuevo password")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Confirmar nuevo password")]
+        [Compare("NewPassword", ErrorMessage = "Las contraseñas introducidas con coinciden.")]
         public string ConfirmPassword { get; set; }
     }
 

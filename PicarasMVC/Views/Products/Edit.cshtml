@@ -5,7 +5,7 @@
 }
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -60,7 +60,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Picture, new { @class = "form-control", type="file" })
+                @Html.TextBoxFor(model => model.Picture, new { @class = "form-control", type = "file" })
                 @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
             </div>
         </div>

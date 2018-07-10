@@ -7,6 +7,7 @@ using Picaras.Model.Entities;
 
 namespace PicarasMVC.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly PicarasModel _db = new PicarasModel();

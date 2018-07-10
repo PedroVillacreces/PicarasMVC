@@ -7,6 +7,7 @@ using Picaras.Model.Entities;
 
 namespace PicarasMVC.Controllers
 {
+    [Authorize]
     public class AgentTransportsController : Controller
     {
         private PicarasModel db = new PicarasModel();

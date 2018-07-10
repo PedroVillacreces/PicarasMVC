@@ -86,7 +86,7 @@ namespace PicarasMVC.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Credenciales inválidas");
                     return View(model);
             }
         }
@@ -129,7 +129,7 @@ namespace PicarasMVC.Controllers
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", "Código inválido");
                     return View(model);
             }
         }

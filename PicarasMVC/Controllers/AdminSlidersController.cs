@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.IO;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
@@ -7,6 +9,7 @@ using Picaras.Model.Entities;
 
 namespace PicarasMVC.Controllers
 {
+    [Authorize]
     public class AdminSlidersController : Controller
     {
         private readonly PicarasModel _db = new PicarasModel();
@@ -47,6 +50,21 @@ namespace PicarasMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                var fileContent = Request.Files["Image"];
+                if (fileContent != null)
+                {
+                    var stream = fileContent.InputStream;
+                    var fileName = Path.GetFileName(fileContent.FileName);
+                    if (fileName != null)
+                    {
+                        var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                        using (var fileStream = System.IO.File.Create(path))
+                        {
+                            await stream.CopyToAsync(fileStream).ConfigureAwait(false);
+                        }
+                    }
+                    adminSlider.Image = $"~/Content/Images/Slider/{fileName}";
+                }
                 _db.AdminSlider.Add(adminSlider);
                 await _db.SaveChangesAsync().ConfigureAwait(false);
                 return RedirectToAction("Index");
