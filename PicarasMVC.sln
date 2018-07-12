@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicarasMVC", "PicarasMVC\Pi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Picaras.Model", "Picaras.Model\Picaras.Model.csproj", "{2E46EBC9-F4AA-4C60-B699-087376C003BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicarasMVCShop", "PicarasMVCShop\PicarasMVCShop.csproj", "{5F643D55-12C3-42AA-A543-6ECD5ABDA19D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2E46EBC9-F4AA-4C60-B699-087376C003BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E46EBC9-F4AA-4C60-B699-087376C003BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E46EBC9-F4AA-4C60-B699-087376C003BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F643D55-12C3-42AA-A543-6ECD5ABDA19D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F643D55-12C3-42AA-A543-6ECD5ABDA19D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F643D55-12C3-42AA-A543-6ECD5ABDA19D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F643D55-12C3-42AA-A543-6ECD5ABDA19D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

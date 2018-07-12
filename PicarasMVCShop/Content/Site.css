@@ -1,0 +1,42 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-fixed-top{
+    min-height:40px !important;
+    display:flex;
+    justify-content:space-around;
+}
+
+.social-icons > a > i{
+    color:white;
+}
+
+.logo{
+    display:flex;
+    justify-content:center;
+}
+.logo img {
+    width:250px;
+    height:250px;
+}
+
+.search-input{
+    margin:0 !important;
+    color:white !important;
+    background-color:#222 !important;
+}

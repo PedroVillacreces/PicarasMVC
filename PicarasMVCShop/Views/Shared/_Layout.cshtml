@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="social-icons">
+            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
+            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
+            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
+            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
+            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
+        </div>
+        <div>
+            @using (Html.BeginForm())
+            {
+                @Html.TextBox("Search", null, new { @class = "form-control search-input", placeholder = "Introduce el producto" })
+                <span class="fas fa-search"></span>  
+            }
+        </div>
+    </nav>
+   <header>
+       <div class="logo">
+           <img src="~/Content/Images/Logo/picaras.jpg" alt="logo" class="logo-img"/>
+       </div>    
+       <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+   </header>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

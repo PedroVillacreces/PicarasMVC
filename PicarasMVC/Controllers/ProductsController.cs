@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Data.Entity;
 using System.IO;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Picaras.Model;
 using Picaras.Model.Entities;
-using System.Web;
 
 namespace PicarasMVC.Controllers
 {
