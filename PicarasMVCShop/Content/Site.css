@@ -79,8 +79,7 @@ textarea {
 }
 
 .navbar-menu {
-    border-top: 1px solid black !important;
-    border-bottom: 1px solid black !important;
+    border-top: 1px solid lightgrey !important;
     border-radius:0 !important;
 }
 
@@ -92,4 +91,25 @@ textarea {
     display: flex;
     justify-content: center;
     align-content: center;
+}
+
+.breadcrumb {
+    background-color: white !important;
+}
+.breadcrumb-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0 !important;
+    margin-top: 10px !important;
+}
+
+.breadcrumb-menu a {
+    color: black;
+    font-weight: bolder;
+}
+
+.navbar-default {
+    background-color: white !important;
+    border-bottom: none !important;
 }

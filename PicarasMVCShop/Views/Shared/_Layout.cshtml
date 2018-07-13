@@ -35,17 +35,7 @@
         <div class="logo">
             <img src="~/Content/Images/Logo/picaras.jpg" alt="logo" class="logo-img" />
         </div>
-        <div class="navbar navbar-menu">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.Action("MenuHeader", "Home")
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav"></ul>
-                </div>
+        @Html.Action("MenuHeader", "Home")
      
     </header>
     <div class="slider">
