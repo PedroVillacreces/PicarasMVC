@@ -13,40 +13,44 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="social-icons">
             <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
-            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
-            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
-            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
-            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
+            <a href="www.facebook.es"><i class="fab fa-twitter-square"></i></a>
+            <a href="www.facebook.es"><i class="fab fa-instagram"></i></a>
+            <a href="www.facebook.es"><i class="fab fa-whatsapp-square"></i></a>
+            <a href="www.facebook.es"><i class="fab fa-linkedin"></i></a>
         </div>
-        <div>
-            @using (Html.BeginForm())
-            {
-                @Html.TextBox("Search", null, new { @class = "form-control search-input", placeholder = "Introduce el producto" })
-                <span class="fas fa-search"></span>  
-            }
+        <div class="search-box">
+            <div class="shopping-cart-wrapper">
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+            <div class="search-field">
+                @using (Html.BeginForm())
+                {
+                    @Html.TextBox("Search", null, new { @class = "search-input form-control ", placeholder = "Introduce el producto" })
+                    <a href="" class=""><span class="fas fa-search"></span></a>
+                }
+            </div>
         </div>
     </nav>
-   <header>
-       <div class="logo">
-           <img src="~/Content/Images/Logo/picaras.jpg" alt="logo" class="logo-img"/>
-       </div>    
-       <div class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
+    <header>
+        <div class="logo">
+            <img src="~/Content/Images/Logo/picaras.jpg" alt="logo" class="logo-img" />
         </div>
+        <div class="navbar navbar-menu">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.Action("MenuHeader", "Home")
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav"></ul>
+                </div>
+     
+    </header>
+    <div class="slider">
+        @Html.Action("Slider", "Home")
     </div>
-   </header>
 
     <div class="container body-content">
         @RenderBody()

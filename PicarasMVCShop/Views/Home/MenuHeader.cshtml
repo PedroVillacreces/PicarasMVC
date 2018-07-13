@@ -1,0 +1,12 @@
+﻿@using Picaras.Model.Entities
+@model IEnumerable<Category>
+
+<div class="menu">
+    <ul class="breadcrumb">
+        @foreach (var item in Model)
+        {
+            <li><a href="#">@item.Name</a></li>
+        }
+
+    </ul>
+</div>

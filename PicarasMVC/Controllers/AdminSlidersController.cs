@@ -56,13 +56,13 @@ namespace PicarasMVC.Controllers
                     var fileName = Path.GetFileName(fileContent.FileName);
                     if (fileName != null)
                     {
-                        var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/Slider"), fileName);
                         using (var fileStream = System.IO.File.Create(path))
                         {
                             await stream.CopyToAsync(fileStream).ConfigureAwait(false);
                         }
                     }
-                    adminSlider.Image = $"~/Content/Images/Slider/{fileName}";
+                    adminSlider.Image = $"/Content/Images/Slider/{fileName}";
                 }
                 _db.AdminSlider.Add(adminSlider);
                 await _db.SaveChangesAsync().ConfigureAwait(false);

@@ -21,9 +21,18 @@ textarea {
     display:flex;
     justify-content:space-around;
 }
+.social-icons{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-.social-icons > a > i{
-    color:white;
+.social-icons > a {
+    margin-right: 10px;
+}
+.social-icons > a > i {
+    color: white;
+    font-size:1.5em;
 }
 
 .logo{
@@ -35,8 +44,52 @@ textarea {
     height:250px;
 }
 
-.search-input{
-    margin:0 !important;
+.search-input {
+    color: white !important;
+    background-color: #222 !important;
+    border: 0 !important;
+    margin-left:30px;
+}
+
+.search-field a > span{
     color:white !important;
-    background-color:#222 !important;
+}
+
+    .search-input:focus{
+        border: 0;
+        box-shadow:none !important;
+    }
+    .search-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+.search-box a > i{
+    color:white;
+    font-size:2em;
+}
+
+.search-box form{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+
+.navbar-menu {
+    border-top: 1px solid black !important;
+    border-bottom: 1px solid black !important;
+    border-radius:0 !important;
+}
+
+.navbar-header{
+    float:none !important;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
