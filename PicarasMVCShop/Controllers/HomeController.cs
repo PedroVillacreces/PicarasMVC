@@ -1,8 +1,7 @@
 ﻿using Picaras.Model;
 using Picaras.Model.Entities;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace PicarasMVCShop.Controllers
@@ -28,6 +27,16 @@ namespace PicarasMVCShop.Controllers
             var model = GetSlider();
             return PartialView(model);
         }
+        public ActionResult BestSeller()
+        {
+            var model = GetBestSeller();
+            return PartialView(model);
+        }
+        public ActionResult MostRecent()
+        {
+            var model = GetRecentAdded();
+            return PartialView(model);
+        }
 
         private IEnumerable<Category> Getall()
         {
@@ -38,5 +47,16 @@ namespace PicarasMVCShop.Controllers
         {
             return _db.AdminSlider;
         }
+
+        private IEnumerable<Product> GetBestSeller()
+        {
+            return _db.Products.OrderBy(x => x.NumberOfSales).Take(16);
+        }
+
+        private IEnumerable<Product> GetRecentAdded()
+        {
+            return _db.Products.OrderBy(x => x.CreateDateTime).Take(16);
+        }
+        
     }
 }

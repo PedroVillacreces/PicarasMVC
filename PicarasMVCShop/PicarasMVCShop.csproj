@@ -144,6 +144,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +165,11 @@
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\MenuHeader.cshtml" />
     <Content Include="Views\Home\Slider.cshtml" />
+    <Content Include="Views\Home\BestSeller.cshtml" />
+    <Content Include="Views\Home\MostRecent.cshtml" />
+    <Content Include="Views\Shared\_ItemLayout.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
+    <Content Include="Views\Item\GetProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

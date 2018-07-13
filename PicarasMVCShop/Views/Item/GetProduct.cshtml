@@ -1,0 +1,35 @@
+﻿@using Picaras.Model.Entities
+@model Product
+@{
+    var descuento = Model.OldPrice - Model.Price;
+}
+<div class="col-md-2"></div>
+<div class="col-md-4">
+    <img class="img-responsive" src="@Model.Picture" alt="@Model.Name" />
+</div>
+<div class="col-md-4">
+    <h4>@Model.Name</h4>
+    <p>@Model.Description</p>
+    <div class="price">
+        <p>@Model.Price</p>
+        @if (descuento > 0 && descuento != Model.Price)
+        {
+            <p>Descuento: @descuento</p>
+        }
+    </div>
+    <div class="sizes">
+        <p>Tallas disponibles: </p>
+    </div>
+    <div class="transporting">
+        <ul>
+            <li>Envio para tal</li>
+            <li>Envio para cual</li>
+        </ul>
+    </div>
+
+
+</div>
+<div class="col-md-2"></div>
+
+
+

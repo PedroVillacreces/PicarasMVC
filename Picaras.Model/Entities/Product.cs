@@ -48,5 +48,8 @@
         [DefaultValue(false)]
         [Display(Name = "Outlet")]
         public bool IsOutlet { get; set; }
+        [DefaultValue(0)]
+        public int NumberOfSales { get; set; }
+
     }
 }

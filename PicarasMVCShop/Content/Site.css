@@ -113,3 +113,9 @@ textarea {
     background-color: white !important;
     border-bottom: none !important;
 }
+
+.horizontal-line {
+    border-bottom: 1px solid lightgrey !important;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
