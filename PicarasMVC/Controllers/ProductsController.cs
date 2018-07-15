@@ -49,7 +49,7 @@ namespace PicarasMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductId,Name,Description,Quantity,Active,Price,Picture,CreateDateTime,OldPrice,CategoryId,SubcategoryId,IsOutlet")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "ProductId,Name,Description,Quantity,Active,Price,Picture,CreateDateTime,OldPrice,CategoryId,SubcategoryId,IsOutlet, Size, ProductCode")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +103,7 @@ namespace PicarasMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductId,Name,Description,Quantity,Active,Price,Picture,OldPrice,CategoryId,SubcategoryId,IsOutlet")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductId,Name,Description,Quantity,Active,Price,Picture,OldPrice,CategoryId,SubcategoryId,IsOutlet, Size, ProductCode")] Product product)
         {
             if (ModelState.IsValid)
             {

@@ -1,33 +1,60 @@
 ﻿@using Picaras.Model.Entities
-@model Product
+@model Picaras.Model.ViewModels.ProductSize
 @{
-    var descuento = Model.OldPrice - Model.Price;
+    var descuento = Model.Product.OldPrice - Model.Product.Price;
 }
 <div class="col-md-2"></div>
 <div class="col-md-4">
-    <img class="img-responsive" src="@Model.Picture" alt="@Model.Name" />
+    <img class="img-responsive" src="@Model.Product.Picture" alt="@Model.Product.Name" />
 </div>
 <div class="col-md-4">
-    <h4>@Model.Name</h4>
-    <p>@Model.Description</p>
+    <h3>@Model.Product.Name</h3>
+    <p style="font-weight: bold">@Model.Product.Description</p>
     <div class="price">
-        <p>@Model.Price</p>
-        @if (descuento > 0 && descuento != Model.Price)
+        <p class="original-price">
+            @Model.Product.Price €
+        @if (descuento > 0 && descuento != Model.Product.Price)
         {
-            <p>Descuento: @descuento</p>
+            <span class="discount">Descuento: @descuento €</span>
         }
-    </div>
-    <div class="sizes">
-        <p>Tallas disponibles: </p>
-    </div>
-    <div class="transporting">
-        <ul>
-            <li>Envio para tal</li>
-            <li>Envio para cual</li>
-        </ul>
-    </div>
+    </p>
 
+</div>
+<div class="sizes">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sizes, "Tallas", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Sizes", new SelectList(Model.Sizes), htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Sizes, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<div class="transporting">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Transports, "Agencias Tranporte", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="Transports" class="form-control" id="Transports">
+                @foreach (var item in Model.Transports)
+                {
+                    <option value="@item.AgentTransportId">@item.AgentName: @item.Price</option>
+                }
+                @Html.ValidationMessageFor(model => model.Transports, "", new { @class = "text-danger" })
 
+            </select>
+        </div>
+    </div>
+</div>
+<div class="quantity">
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Quantity">Cantidad</label>
+        <div class="col-md-10">
+            <select name="Quantity" class="form-control" id="Quantity"></select>
+        </div>
+    </div>
+</div>
+</div>
+<div class="send-car">
+    <button class="btn btn-default">Comprar</button>
 </div>
 <div class="col-md-2"></div>
 

@@ -14,6 +14,9 @@
         [MaxLength(200)]
         [Display(Name = "Producto")]
         public string Name { get; set; }
+        [Required]
+        [Display(Name = "Código Producto")]
+        public int ProductCode { get; set; }
         [MaxLength(500)]
         [Display(Name = "Descripción")]
         public string Description { get; set; }
@@ -50,6 +53,8 @@
         public bool IsOutlet { get; set; }
         [DefaultValue(0)]
         public int NumberOfSales { get; set; }
+        [Required]
+        public string Size { get; set; }
 
     }
 }

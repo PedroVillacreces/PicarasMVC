@@ -31,19 +31,17 @@
             </div>
         </div>
     </nav>
-<header>
-    <div class="logo">
-        <img src="~/Content/Images/Logo/picaras.jpg" alt="logo" class="logo-img" />
-    </div>
-    @Html.Action("MenuHeader", "Home")
-</header>
-@RenderBody()
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
+    <header>
+        <div class="logo">
+            <img src="~/Content/Images/Logo/picaras.jpg" alt="logo" class="logo-img" />
+        </div>
+        @Html.Action("MenuHeader", "Home")
+    </header>
+        @RenderBody()
+
 
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-</body>
+    <script src="~/Scripts/QuantityScript.js"></script>
 </html>

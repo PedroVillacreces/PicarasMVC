@@ -61,6 +61,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PicarasModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ProductSize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

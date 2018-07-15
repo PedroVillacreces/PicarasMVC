@@ -43,6 +43,12 @@ Layout = "~/Views/Shared/_Layout.cshtml";
             <th>
                 @Html.DisplayNameFor(model => model.IsOutlet)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
             <th>Botones acciones navegación</th>
         </tr>
 
@@ -81,6 +87,12 @@ Layout = "~/Views/Shared/_Layout.cshtml";
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.IsOutlet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
                 </td>
                 <td style="width: 100%">
                     @Html.ActionLink(" ", "Edit", new { id = item.ProductId }, new { @class = "btn btn-warning btn-product fas fa-edit" })

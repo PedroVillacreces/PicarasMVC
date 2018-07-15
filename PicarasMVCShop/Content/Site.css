@@ -119,3 +119,41 @@ textarea {
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
+
+.original-price {
+    font-size: 1.5em;
+    color: red;
+}
+
+.discount {
+    text-decoration: line-through;
+    font-weight: bold;
+}
+
+.transporting {
+    margin-top: 60px;
+}
+
+.send-car {
+    margin-top: 21%;
+}
+
+.quantity {
+    margin-top: 110px;
+}
+
+.send-car > .btn-default {
+    background-color: black !important;
+    color: white !important;
+}
+.product-cart {
+    margin-top: 5%;
+}
+header {
+    margin-bottom: 50px;
+}
+
+.btn-details {
+    background-color: slategray !important;
+
+}
