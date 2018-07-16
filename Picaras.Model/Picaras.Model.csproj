@@ -54,6 +54,7 @@
     <Compile Include="Entities\AdminSlider.cs" />
     <Compile Include="Entities\AgentTransport.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\ContactForm.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />

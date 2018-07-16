@@ -11,10 +11,12 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="breadcrumb breadcrumb-menu">
+                <li> @Html.ActionLink("INICIO", "Index", "Home")</li>
                 @foreach (var item in Model)
                 {
                     <li><a href="#">@item.Name.ToUpper()</a></li>
                 }
+                <li> @Html.ActionLink("CONTACTO", "Index", "Contact")</li>
 
             </ul>
         </div>
