@@ -3,6 +3,8 @@ using Picaras.Model.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using MoreLinq;
+
 
 namespace PicarasMVCShop.Controllers
 {
@@ -50,12 +52,12 @@ namespace PicarasMVCShop.Controllers
 
         private IEnumerable<Product> GetBestSeller()
         {
-            return _db.Products.OrderBy(x => x.NumberOfSales).Take(16);
+            return _db.Products.OrderBy(x => x.NumberOfSales).Take(16).AsEnumerable().DistinctBy(x=>x.ProductCode);
         }
 
         private IEnumerable<Product> GetRecentAdded()
         {
-            return _db.Products.OrderBy(x => x.CreateDateTime).Take(16);
+            return _db.Products.OrderBy(x => x.CreateDateTime).Take(16).AsEnumerable().DistinctBy(x => x.ProductCode); ;
         }
         
     }

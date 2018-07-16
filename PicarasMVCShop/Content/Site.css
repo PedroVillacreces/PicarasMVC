@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 40px;
     padding-bottom: 20px;
 }
 
@@ -38,10 +38,12 @@ textarea {
 .logo{
     display:flex;
     justify-content:center;
+    background-image: url("Images/fotoheader.jpg");
+    background-position: center;
 }
 .logo img {
-    width:250px;
-    height:250px;
+    width:380px;
+    height:275px;
 }
 
 .search-input {
@@ -118,6 +120,8 @@ textarea {
     border-bottom: 1px solid lightgrey !important;
     padding-bottom: 20px;
     margin-bottom: 20px;
+    margin-top: 40px;
+    padding-bottom: 5px;
 }
 
 .original-price {
@@ -149,11 +153,28 @@ textarea {
 .product-cart {
     margin-top: 5%;
 }
-header {
-    margin-bottom: 50px;
-}
+
 
 .btn-details {
     background-color: slategray !important;
+    border-color: slategray !important;
+}
 
+.navbar-inverse {
+    margin-bottom: 0 !important;
+}
+
+.thumbnail img {
+    min-height: 400px;
+    max-height: 400px;
+    width: 300px;
+}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    height: 400px;
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1;
 }
