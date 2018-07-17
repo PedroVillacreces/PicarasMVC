@@ -1,0 +1,36 @@
+﻿@using Picaras.Model.ViewModels
+@model IEnumerable<ProductCartViewModel>
+@if (Model != null && Model.Any())
+{
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Artículo</th>
+                    <th>Cantidad</th>
+                    <th>Talla</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.ShoppingCart.Quantity</td>
+                        <td>@item.ShoppingCart.Size</td>
+                        <td><button class="btn btn-danger remove-to-cart">Eliminar</button></td>
+                        <td><button class="btn btn-warning">Editar Cantidad</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+else
+{
+   <h2 class="text-center quantity">Uppppsss!!! No hay productos en la cesta</h2>
+}
+

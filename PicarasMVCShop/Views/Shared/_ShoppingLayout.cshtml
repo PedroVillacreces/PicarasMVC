@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Picaras CLoset Artículo</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -21,10 +21,10 @@
         <div class="search-box">
             @Html.Action("GetShoppingCounter", "Shopping")
             <div class="search-field">
-                @using (Html.BeginForm("Index", "Search", FormMethod.Post))
+                @using (Html.BeginForm())
                 {
                     @Html.TextBox("Search", null, new { @class = "search-input form-control ", placeholder = "Introduce el producto" })
-                    <button type="submit"><span class="fas fa-search"></span></button>
+                    <a href="" class=""><span class="fas fa-search"></span></a>
                 }
             </div>
         </div>
@@ -34,21 +34,10 @@
             <a href="/"><img src="~/Content/Images/Logo/picaras.png" alt="logo" class="logo-img" /></a>
         </div>
         @Html.Action("MenuHeader", "Home")
-     
     </header>
-    <div class="slider">
-        @Html.Action("Slider", "Home")
-    </div>
-
-<div class="container body-content">
     @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
-</div>
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/DeleteItemToCart.js"></script>
 </body>
 </html>

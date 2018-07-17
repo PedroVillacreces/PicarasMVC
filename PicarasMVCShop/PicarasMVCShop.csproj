@@ -143,6 +143,7 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\DeleteItemToCart.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
@@ -188,6 +189,10 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\SendEmail.cshtml" />
     <Content Include="Views\Contact\SendData.cshtml" />
+    <Content Include="Views\Shared\_ShoppingLayout.cshtml" />
+    <Content Include="Views\Shopping\GetShoppingCounter.cshtml" />
+    <Content Include="Views\Shopping\ShowShoppingCart.cshtml" />
+    <Content Include="Views\Shopping\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -197,7 +202,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shopping\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Picaras.Model\Picaras.Model.csproj">

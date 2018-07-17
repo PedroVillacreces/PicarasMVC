@@ -19,9 +19,7 @@
             <a href="www.facebook.es"><i class="fab fa-linkedin"></i></a>
         </div>
         <div class="search-box">
-            <div class="shopping-cart-wrapper">
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-            </div>
+            @Html.Action("GetShoppingCounter", "Shopping")
             <div class="search-field">
                 @using (Html.BeginForm())
                 {
