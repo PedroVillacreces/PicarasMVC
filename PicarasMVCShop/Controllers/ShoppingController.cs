@@ -42,15 +42,19 @@ namespace PicarasMVCShop.Controllers
         [HttpPost]
         public JsonResult AddtoCart(ShoppingCart shopping)
         {
+            var agents = _db.AgentTransports.ToList();
             if (Session["cart"] == null)
             {
                 var cart = new List<ProductCartViewModel>();
                 var getProduct = _db.Products.Find(shopping.ProductCode);
+               
                 cart.Add(new ProductCartViewModel
                 {
                     Product = getProduct,
-                    ShoppingCart = shopping
+                    ShoppingCart = shopping,
+                    AgentTransport = agents
                 });
+
                 Session["cart"] = cart;
             }
             else
@@ -66,7 +70,8 @@ namespace PicarasMVCShop.Controllers
                     cart.Add(new ProductCartViewModel
                     {
                         Product = _db.Products.Find(shopping.ProductCode),
-                        ShoppingCart = shopping
+                        ShoppingCart = shopping,
+                        AgentTransport = agents
                     });
                 }
 

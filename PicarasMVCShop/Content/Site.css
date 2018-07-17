@@ -10,11 +10,6 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
 
 .navbar-fixed-top{
     min-height:40px !important;
@@ -119,7 +114,7 @@ textarea {
 .horizontal-line {
     border-bottom: 1px solid lightgrey !important;
     padding-bottom: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     margin-top: 40px;
     padding-bottom: 5px;
 }
@@ -158,6 +153,7 @@ textarea {
 .btn-details {
     background-color: slategray !important;
     border-color: slategray !important;
+    color:white !important;
 }
 
 .navbar-inverse {
@@ -177,4 +173,22 @@ textarea {
     width: 100%;
     max-width: 100%;
     line-height: 1;
+}
+
+.btn-send{
+    background-color:black !important;
+    color: white !important;
+    border-color:black !important;
+}
+
+.btn-back-contact{
+    background-color: white !important;
+    color:black !important;
+    border-color: black !important;
+}
+
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }

@@ -155,6 +155,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\OutletController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +194,9 @@
     <Content Include="Views\Shopping\GetShoppingCounter.cshtml" />
     <Content Include="Views\Shopping\ShowShoppingCart.cshtml" />
     <Content Include="Views\Shopping\Index.cshtml" />
+    <Content Include="Views\Outlet\Outlets.cshtml" />
+    <Content Include="Views\Shared\_OutletLayout.cshtml" />
+    <Content Include="Views\Outlet\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

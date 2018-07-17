@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Picaras.Model.Entities
 {
@@ -13,5 +15,7 @@ namespace Picaras.Model.Entities
         [MaxLength(500)]
         [Display(Name = "Descripción")]
         public string Description { get; set; }
+        [ForeignKey("SubcategoryId")]
+        public IEnumerable<Subcategory> Subcategories { get; set; }
     }
 }
