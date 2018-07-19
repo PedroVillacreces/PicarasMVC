@@ -135,6 +135,7 @@
     <Content Include="Content\Images\Logo\picaras.jpg" />
     <Content Include="Content\Images\Slider\743154-600-338.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\AddToCart.js" />
@@ -142,6 +143,7 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="fonts\FuturaStd-Light.woff" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\CategoryService.js" />
     <Content Include="scripts\DeleteItemToCart.js" />

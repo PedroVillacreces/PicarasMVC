@@ -1,5 +1,4 @@
-﻿@using System.Runtime.CompilerServices
-@using Picaras.Model.ViewModels
+﻿@using Picaras.Model.ViewModels
 @model IEnumerable<ProductCartViewModel>
 @{
     var amount = Model.Select((x => x.Product.Price * x.ShoppingCart.Quantity)).Sum();
@@ -37,16 +36,24 @@
             }
             </tbody>
         </table>
-        <div class="row" style="border: 1px solid #ddd; padding:10px;">
+        <div class="row" style="border: 1px solid #ddd; padding: 10px;">
+            <h4 style="margin-bottom: 20px;">Datos del Pedido</h4>
             <div class="col-md-3">
                 <div class="form-group">
                     @Html.Label("Transport", "Elige Transporte")
                     <select class="form-control" style="width: 50%">
-                        @foreach (var item in Model.FirstOrDefault().AgentTransport)
+
+                        @{
+                            var agentTransports = Model.FirstOrDefault()?.AgentTransport;
+                        }
+                        @if (agentTransports != null)
                         {
-                            <option value="@item.AgentTransportId">
-                                @item.AgentName - @item.Price
-                            </option>
+                            foreach (var item in agentTransports)
+                            {
+                                <option value="@item.AgentTransportId">
+                                    @item.AgentName - @item.Price
+                                </option>
+                            }
                         }
                     </select>
                 </div>
@@ -78,18 +85,17 @@
             </div>
             <div class="col-md-3">
                 <div class="total-amount">
-                    <label style="margin-bottom:15px;">Total de la Compra</label>
-                    <p><strong>Total en Artículos:</strong> @amountNoIVA €</p>
-                    <p><strong>Precio Transporte:</strong> 0 €</p>
-                    <p><strong>IVA 21 %:</strong> @IVA €</p>
-                    <p><strong>Total a Pagar:</strong> @amount €</p>
+                    <label style="margin-bottom: 15px;">Total de la Compra</label>
+                    <p><strong>Total en Artículos:</strong> @amountNoIVA€</p>
+                    <p><strong>Precio Transporte:</strong> 0€</p>
+                    <p><strong>IVA 21%:</strong> @IVA€</p>
+                    <p><strong>Total a Pagar:</strong> @amount€</p>
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="margin-top: 10px;">
             <button class="btn btn-details">Finalizar Compra</button>
         </div>
-
     </div>
 }
 else

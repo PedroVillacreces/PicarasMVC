@@ -1,8 +1,18 @@
-﻿body {
+﻿@font-face {
+    font-family: 'Futura Std Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Futura Std Light'), url('../fonts/FuturaStd-Light.woff') format('woff');
+}
+
+body {
     padding-top: 40px;
     padding-bottom: 20px;
 }
 
+h1, h2, h3, h4, input, button, a, li, p {
+    font-family: 'Futura Std Light' !important;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -109,6 +119,7 @@
 .navbar-default {
     background-color: white !important;
     border-bottom: none !important;
+    margin-bottom: 0 !important;
 }
 
 .horizontal-line {
@@ -193,7 +204,19 @@
             box-sizing: border-box;
 }
 
-.dropdown-menu {
+.second-nav {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+}
+
+.second-nav a {
+    color: black;
+    font-weight: bold;
+}
+
+/*.dropdown-menu {
     float: left;
     overflow: hidden;
 }
@@ -240,4 +263,4 @@
 
 .dropdown-menu:hover .dropdown-content {
     display: block;
-}
+}*/

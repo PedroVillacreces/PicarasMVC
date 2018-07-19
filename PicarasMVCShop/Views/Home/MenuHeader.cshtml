@@ -1,34 +1,30 @@
 ﻿@using Picaras.Model.Entities
 @model IEnumerable<Category>
 <div class="navbar navbar-default navbar-menu">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse">
-            @Html.ActionLink("INICIO", "Index", "Home")
-            @Html.ActionLink("CONTACTO", "Index", "Contact")
-            @Html.ActionLink("OUTLET", "Index", "Outlet")
 
-            <div class="dropdown-menu">
-                @foreach (var item in Model)
-                {
-                    <button class="dropbtn">
-                        @Html.ActionLink(item.Name, "Index", "Outlet")
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        @foreach (var subcategory in item.Subcategories)
-                        {
-                            @Html.ActionLink(subcategory.Name, "Index", "Home")
-                        }
-                    </div>
-                }
-            </div>
-        </div>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
     </div>
+    <div class="second-nav collapse">
+        <div class="item-nav">@Html.ActionLink("INICIO / ", "Index", "Home")</div>
+        <div class="item-nav">@Html.ActionLink("CONTACTO / ", "Index", "Contact")</div>
+        <div class="item-nav">@Html.ActionLink("OUTLET / ", "Index", "Outlet")</div>
+        @foreach (var item in Model)
+        {
+            <div class="item-nav">
+                @Html.ActionLink(item.Name.ToUpper() + " / ", "Index", "Outlet")
+            </div>
+
+            @*foreach (var subcategory in item.Subcategories)
+            {
+                @Html.ActionLink(subcategory.Name, "Index", "Home")
+            }*@
+
+        }
+    </div>
+
 </div>
