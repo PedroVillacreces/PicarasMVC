@@ -21,10 +21,10 @@
         <div class="search-box">
             @Html.Action("GetShoppingCounter", "Shopping")
             <div class="search-field">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Index", "Search", FormMethod.Post))
                 {
                     @Html.TextBox("Search", null, new { @class = "search-input form-control ", placeholder = "Introduce el producto" })
-                    <a href="" class=""><span class="fas fa-search"></span></a>
+                    <button type="submit"><span class="fas fa-search"></span></button>
                 }
             </div>
         </div>

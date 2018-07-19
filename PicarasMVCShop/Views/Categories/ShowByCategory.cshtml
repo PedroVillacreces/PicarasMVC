@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Picaras.Model.Entities.Product>
+
+<div class="row">
+    <div class="container">
+        <h2 class="text-center horizontal-line">Artículos de @ViewBag.Category</h2>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="@item.Picture" alt="@item.Name">
+                <div class="caption">
+                    <h3>@item.Name</h3>
+                    <p>@item.Description</p>
+                    @Html.ActionLink("Detalles", "Index", "Item", new { id = @item.ProductId }, new { @class = "btn btn-info" })
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

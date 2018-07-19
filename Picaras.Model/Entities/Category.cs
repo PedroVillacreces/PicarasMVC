@@ -15,7 +15,6 @@ namespace Picaras.Model.Entities
         [MaxLength(500)]
         [Display(Name = "Descripción")]
         public string Description { get; set; }
-        [ForeignKey("SubcategoryId")]
-        public IEnumerable<Subcategory> Subcategories { get; set; }
+        public virtual ICollection<Subcategory> Subcategories { get; set; }
     }
 }

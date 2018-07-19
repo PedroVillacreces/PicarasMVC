@@ -101,6 +101,20 @@ namespace PicarasMVCShop.Controllers
             return Json(message, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult EditToCart(ShoppingCart shopping)
+        {
+            var message = "Editado";
+            var cart = (List<ProductCartViewModel>)Session["cart"];
+            var productEdited = cart.FirstOrDefault(x => x.ShoppingCart.ProductCode == shopping.ProductCode);
+            cart.Remove(productEdited);
+            if (productEdited != null) productEdited.ShoppingCart.Quantity = shopping.Quantity;
+            cart.Add(productEdited);
+            if (!cart.Contains(productEdited))
+            {
+                message = "Error";
+            }
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
         private int IsExist(int id)
         {
             var cart = (List<ProductCartViewModel>)Session["cart"];

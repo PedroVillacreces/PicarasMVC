@@ -10,16 +10,25 @@
             </button>
         </div>
         <div class="navbar-collapse collapse">
-            <ul class="breadcrumb breadcrumb-menu">
-                <li> @Html.ActionLink("INICIO", "Index", "Home")</li>
+            @Html.ActionLink("INICIO", "Index", "Home")
+            @Html.ActionLink("CONTACTO", "Index", "Contact")
+            @Html.ActionLink("OUTLET", "Index", "Outlet")
+
+            <div class="dropdown-menu">
                 @foreach (var item in Model)
                 {
-                    <li><a href="#">@item.Name.ToUpper()</a></li>
+                    <button class="dropbtn">
+                        @Html.ActionLink(item.Name, "Index", "Outlet")
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        @foreach (var subcategory in item.Subcategories)
+                        {
+                            @Html.ActionLink(subcategory.Name, "Index", "Home")
+                        }
+                    </div>
                 }
-                <li> @Html.ActionLink("CONTACTO", "Index", "Contact")</li>
-                <li> @Html.ActionLink("OUTLET", "Index", "Outlet")</li>
-
-            </ul>
+            </div>
         </div>
     </div>
 </div>

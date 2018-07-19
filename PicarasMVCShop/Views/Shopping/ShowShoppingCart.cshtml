@@ -1,32 +1,43 @@
-﻿@using Picaras.Model.ViewModels
+﻿@using System.Runtime.CompilerServices
+@using Picaras.Model.ViewModels
 @model IEnumerable<ProductCartViewModel>
+@{
+    var amount = Model.Select((x => x.Product.Price * x.ShoppingCart.Quantity)).Sum();
+    var amountNoIVA = (double)amount - ((double)amount * 0.21);
+    var IVA = (double)amount * 0.21;
+
+}
 @if (Model != null && Model.Any())
 {
     <div class="container">
+        <h2 class="text-center horizontal-line">Estado de Carro de Compra</h2>
         <table class="table">
             <thead>
-                <tr>
-                    <th>Artículo</th>
-                    <th>Cantidad</th>
-                    <th>Talla</th>
-                    <th>Eliminar</th>
-                    <th>Modificar</th>
-                </tr>
+            <tr>
+                <th>Artículo</th>
+                <th>Cantidad</th>
+                <th>Talla</th>
+                <th>Precio</th>
+                <th>Eliminar</th>
+                <th>Modificar</th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Product.Name</td>
-                        <td>@item.ShoppingCart.Quantity</td>
-                        <td>@item.ShoppingCart.Size</td>
-                        <td><button class="btn btn-danger remove-to-cart">Eliminar</button></td>
-                        <td><button class="btn btn-warning">Editar Cantidad</button></td>
-                    </tr>
-                }
+            @foreach (var item in Model)
+            {
+                var totalPrice = item.Product.Price * item.ShoppingCart.Quantity;
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.ShoppingCart.Quantity</td>
+                    <td>@item.ShoppingCart.Size</td>
+                    <td>@totalPrice</td>
+                    <td><button class="btn btn-danger remove-to-cart">Eliminar</button></td>
+                    <td><button class="btn btn-warning edit-to-cart">Editar Cantidad</button></td>
+                </tr>
+            }
             </tbody>
         </table>
-        <div class="row">
+        <div class="row" style="border: 1px solid #ddd; padding:10px;">
             <div class="col-md-3">
                 <div class="form-group">
                     @Html.Label("Transport", "Elige Transporte")
@@ -65,8 +76,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <div class="total-amount">
+                    <label style="margin-bottom:15px;">Total de la Compra</label>
+                    <p><strong>Total en Artículos:</strong> @amountNoIVA €</p>
+                    <p><strong>Precio Transporte:</strong> 0 €</p>
+                    <p><strong>IVA 21 %:</strong> @IVA €</p>
+                    <p><strong>Total a Pagar:</strong> @amount €</p>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <button class="btn btn-details">Finalizar Compra</button>
