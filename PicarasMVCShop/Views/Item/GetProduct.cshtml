@@ -47,7 +47,13 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Quantity">Cantidad</label>
             <div class="col-md-10">
-                <select name="Quantity" class="form-control" id="Quantity"></select>
+                <select name="Quantity" class="form-control" id="Quantity">
+                    @for (var i = 0; i < Model.Product.Quantity; i++)
+                    {
+                        var val = i + 1;
+                        <option value="@val">@val</option>
+                    }
+                </select>
             </div>
         </div>
     </div>

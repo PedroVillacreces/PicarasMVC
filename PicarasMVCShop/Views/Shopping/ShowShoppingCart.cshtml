@@ -4,8 +4,8 @@
     var amount = Model.Select((x => x.Product.Price * x.ShoppingCart.Quantity)).Sum();
     var amountNoIVA = (double)amount - ((double)amount * 0.21);
     var IVA = (double)amount * 0.21;
-
 }
+
 @if (Model != null && Model.Any())
 {
     <div class="container">

@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <title>Picaras CLoset Artículo</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -29,30 +29,17 @@
                 }
             </div>
         </div>
-        <div class="shopping-cart-wrapper">
-            <a href="/Register"><i class="fas fa-user"></i></a>
-        </div>
     </nav>
     <header>
         <div class="logo">
             <a href="/"><img src="~/Content/Images/Logo/picaras.png" alt="logo" class="logo-img" /></a>
         </div>
         @Html.Action("MenuHeader", "Home")
-
     </header>
-    <div class="slider">
-        @Html.Action("Slider", "Home")
-    </div>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
+    @RenderBody()
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/DeleteItemToCart.js"></script>
+    <script src="~/scripts/EditToCart.js"></script>
 </body>
 </html>

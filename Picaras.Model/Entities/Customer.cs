@@ -11,41 +11,41 @@ namespace Picaras.Model.Entities
         [Key]
         public int CustomerId { get; set; }
         [MaxLength(50)]
-        [Required]
+        [Required(ErrorMessage = "Campo Nombre Obligatorio")]
         [Display(Name = "Nombre")]
         public string Name { get; set; }
         [MaxLength(200)]
-        [Required]
+        [Required(ErrorMessage = "Campo Apellidos Obligatorio")]
         [Display(Name = "Apellidos")]
         public string LastName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo Dirección Obligatorio")]
         [MaxLength(200)]
         [Display(Name = "Dirección")]
         public string Address { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo País Obligatorio")]
         [MaxLength(30)]
         [Display(Name = "País")]
         public string Country { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo CP Obligatorio")]
         [MaxLength(10)]
         [Display(Name = "CodPostal")]
         public string PostCode { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo Población Obligatorio")]
         [MaxLength(20)]
         [Display(Name = "Población")]
         public string City { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo Provincia Obligatorio")]
         [MaxLength(20)]
         [Display(Name = "Provincia")]
         public string Region { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "FNacimiento")]
         public DateTime Birthday { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo Teléfono Obligatorio")]
         [Phone]
         [Display(Name = "Teléfono")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo Correo Electrónico Obligatorio")]
         [EmailAddress]
         [Display(Name = "Correo")]
         public string Email { get; set; }
