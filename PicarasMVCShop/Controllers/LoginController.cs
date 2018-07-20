@@ -13,5 +13,12 @@ namespace PicarasMVCShop.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //public JsonResult LoginPage(string user, string pass)
+        //{
+
+        //    //return PartialView();
+        //}
     }
 }

@@ -40,6 +40,7 @@ namespace Picaras.Model.Entities
         public string Region { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "FNacimiento")]
+        [Required(ErrorMessage = "Campo Fecha de Nacimiento Obligatorio")]
         public DateTime Birthday { get; set; }
         [Required(ErrorMessage = "Campo Teléfono Obligatorio")]
         [Phone]
@@ -49,6 +50,16 @@ namespace Picaras.Model.Entities
         [EmailAddress]
         [Display(Name = "Correo")]
         public string Email { get; set; }
+        [Display(Name="Nombre de Usuario")]
+        [Required(ErrorMessage = "Campo Nombre de Usuario Obligatorio")]
+        public string UserName { get; set; }
+        [Display(Name = "Contraseña")]
+        [Required(ErrorMessage = "Campo Contraseña Obligatorio")]
+        public string Password { get; set; }
+        [Compare("Password", ErrorMessage = "Las contraseñas deben coincidir !")]
+        public string ConfirmPassword { get; set; }
+        public bool Active { get; set; }
+        public string CodeActive { get; set; }
 
     }
 }

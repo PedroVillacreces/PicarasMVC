@@ -216,6 +216,7 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shared\_RegisterLayout.cshtml" />
     <Content Include="Views\Register\AddUser.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -225,7 +226,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Picaras.Model\Picaras.Model.csproj">

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.CodeDom.Compiler;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Picaras.Model;
 using Picaras.Model.Entities;
@@ -27,13 +26,21 @@ namespace PicarasMVCShop.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register([Bind(Include = "CustomerId,Name,LastName,Address,Country,PostCode,City,Region,Phone,Email")] Customer customer)
+        public async Task<ActionResult> Register([Bind(Include = "CustomerId,Name,LastName,Address,Country,PostCode,City,Region,Birthday,Phone,Email, UserName, Password")] Customer customer)
         {
-            if (!ModelState.IsValid) return View("~/Views/Register/AddUser.cshtml");
+            customer.CodeActive = GeneratedCodeAttribute();
+            customer.Active = false;
             _db.Customers.Add(customer);
             await _db.SaveChangesAsync().ConfigureAwait(false);
             return View("~/Views/Home/Index.cshtml");
+        }
 
+        private static string GeneratedCodeAttribute()
+        {
+            var random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, 10)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
