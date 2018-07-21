@@ -1,0 +1,11 @@
+﻿@using System.Reflection.Emit
+@model Picaras.Model.Entities.Product
+<h4>
+    Hemos enviado un email a su cuenta, por favor abralo e introduzca el codigo enviado para activar su cuenta.
+</h4>
+    @using (Html.BeginForm())
+    {
+        <label>Introduzca el codigo</label>
+        <input type="text" value=""/>
+        <input type="submit" name="Enviar" value="Activar cuenta"/>
+    }

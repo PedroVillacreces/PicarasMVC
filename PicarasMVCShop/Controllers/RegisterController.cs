@@ -58,5 +58,17 @@ namespace PicarasMVCShop.Controllers
             return new string(Enumerable.Repeat(chars, 10)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+        [HttpPost]
+        public ActionResult ActiveAccount(int userId, string code)
+        {
+            var user =_db.Customers.Find(userId);
+            if (user != null && user.CodeActive == code)
+            {
+                user.Active = true;
+                return View("~/Views/Home/Index.cshtml");
+            }
+            return View("~/Views/Register/Index.cshtml");
+
+        }
     }
 }
