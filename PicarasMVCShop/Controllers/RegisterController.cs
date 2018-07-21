@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Picaras.Model;
 using Picaras.Model.Entities;
+using PicarasMVCShop.Helpers;
 
 namespace PicarasMVCShop.Controllers
 {
@@ -26,13 +27,28 @@ namespace PicarasMVCShop.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register([Bind(Include = "CustomerId,Name,LastName,Address,Country,PostCode,City,Region,Birthday,Phone,Email, UserName, Password")] Customer customer)
+        public async Task<ActionResult> Register([Bind(Include = "CustomerId,Name,LastName,Address,Country,PostCode,City,Region,Birthday,Phone,Email,UserName,Password,ConfirmPassword")] Customer customer)
         {
             customer.CodeActive = GeneratedCodeAttribute();
             customer.Active = false;
             _db.Customers.Add(customer);
             await _db.SaveChangesAsync().ConfigureAwait(false);
-            return View("~/Views/Home/Index.cshtml");
+            var messege = "El código de activación de la cuenta es el: " + customer.CodeActive;
+            SenderEmails.Sender("Código Activación de Pícaras", messege,
+                customer.Email, "pedrovillacreces@gmail.com");
+            return View("~/Views/Register/ActivateAccount.cshtml", customer);
+        }
+
+        [HttpPost]
+        public ActionResult ActivateAccount(int customerId, string code)
+        {
+            var user = _db.Customers.Find(customerId);
+            if (user == null || user.CodeActive != code) return View("~/Views/Register/ActivateAccount.cshtml");
+            user.Active = true;
+            _db.Entry(user).Property("Active").IsModified = true;
+            _db.SaveChanges();
+            return View(("~/Views/Login/Index.cshtml"));
+
         }
 
         private static string GeneratedCodeAttribute()

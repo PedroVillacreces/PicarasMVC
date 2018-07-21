@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using System.Web.Mvc;
+using PicarasMVCShop.Helpers;
 
 namespace PicarasMVCShop.Controllers
 {
@@ -11,7 +12,7 @@ namespace PicarasMVCShop.Controllers
         {
             return View();
         }
-        
+
         public ActionResult SendEmail()
         {
             return PartialView();
@@ -19,30 +20,9 @@ namespace PicarasMVCShop.Controllers
         [HttpPost]
         public ActionResult SendData()
         {
-            var fromAddress = new MailAddress("pedrovillacreces@gmail.com", "Cliente Picaras Closet");
-            var toAddress = new MailAddress("pedrovillacreces@gmail.com", "Receptor");
-            const string fromPassword = "4perrosladran";
-            var subject = this.Request["Subject"];
-            var body = this.Request["Message"];
+            SenderEmails.Sender(this.Request["Subject"], this.Request["Message"],
+                "pedrovillacreces@gmail.com", this.Request["Email"]);
            
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
-            using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body,
-                Bcc = { new MailAddress(this.Request["Email"])}
-            })
-            {
-                smtp.Send(message);
-            }
             return View();
         }
     }

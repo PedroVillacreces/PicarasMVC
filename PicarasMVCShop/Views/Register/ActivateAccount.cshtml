@@ -1,0 +1,8 @@
+﻿@model Picaras.Model.Entities.Customer
+@using (Html.BeginForm("ActivateAccount", "Register"))
+{
+    <label>Introduce el código de verificación para activar tu cuenta</label>
+    <input type="hidden" name="customerId" value="@Model.CustomerId"/>
+    <input type="text" name="code" required/>
+    <input type="submit" value="Envíar código"/>
+}
