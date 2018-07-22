@@ -1,0 +1,37 @@
+﻿@using Picaras.Model.Entities
+@{
+    var isUser = Session["user"];
+    var userMap = (Customer) Session["user"];
+}
+    @if (isUser == null)
+    {
+        <div class="shopping-cart-wrapper">
+            <a href="/Register"><i class="fas fa-user-plus"></i></a>
+        </div>
+    }
+    else
+    {
+        <div class="shopping-cart-wrapper" style="margin-top: 7px;">
+            <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                        <span>Bienvenido: @userMap.Name</span>
+                        <span class="icon is-small">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu4" role="menu" style="top: 86%;">
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            @Html.ActionLink("Cerrar Sesion", "Logout", "Login")
+                            @Html.ActionLink("Menu Usuario", "UserMenu", "Login")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+

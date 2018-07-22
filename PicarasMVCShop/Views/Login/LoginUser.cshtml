@@ -1,37 +1,35 @@
 ﻿@model Picaras.Model.Entities.Customer
 
-<div class="row margin-container">
+<div class="row margin-container"  id="loginForm">
     <div class="col-md-12">
-        <section id="loginForm">
-            @using (Html.BeginForm("LoginPage", "Login", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                <h4>Utiliza tu cuenta para ingresar al sistema</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
+        <section>
+            <h4>Utiliza tu cuenta para ingresar al sistema</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control userName" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control passwordUser" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Ingresar" class="btn btn-default" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="Ingresar" class="btn btn-default" id="login" />
                 </div>
-                @* Enable this once you have account confirmation enabled for password reset functionality
+            </div>
+            @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
                     </p>*@
-            }
         </section>
     </div>
 </div>
+<div class="validationLogin"></div>

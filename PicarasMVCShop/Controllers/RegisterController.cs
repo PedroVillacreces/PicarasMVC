@@ -62,13 +62,16 @@ namespace PicarasMVCShop.Controllers
         public ActionResult ActiveAccount(int userId, string code)
         {
             var user =_db.Customers.Find(userId);
-            if (user != null && user.CodeActive == code)
-            {
-                user.Active = true;
-                return View("~/Views/Home/Index.cshtml");
-            }
-            return View("~/Views/Register/Index.cshtml");
+            if (user == null || user.CodeActive != code) return View("~/Views/Register/Index.cshtml");
+            user.Active = true;
+            return View("~/Views/Home/Index.cshtml");
+        }
 
+        [HttpPost]
+        public JsonResult DoesUserNameExist(string userName)
+        {
+            var user = _db.Customers.FirstOrDefault(x => x.UserName == userName);
+            return Json(user == null);
         }
     }
 }

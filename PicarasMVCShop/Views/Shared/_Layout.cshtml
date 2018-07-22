@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Picaras Inicio</title>
     <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -29,9 +29,7 @@
                 }
             </div>
         </div>
-        <div class="shopping-cart-wrapper">
-            <a href="/Register"><i class="fas fa-user-plus"></i></a>
-        </div>
+        @Html.Partial("../Register/RegisterIcon")
         <div class="shopping-cart-wrapper">
             <a href="/Login"><i class="fas fa-user"></i></a>
         </div>
@@ -56,6 +54,14 @@
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(".is-hoverable").hover(function () {
+        $("#dropdown-menu4").css("display", "block");
+    },
+        function() {
+            $("#dropdown-menu4").css("display", "none");
+        });
+</script>
 </body>
 </html>

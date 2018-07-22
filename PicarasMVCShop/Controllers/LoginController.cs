@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Picaras.Model;
 
 namespace PicarasMVCShop.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly PicarasModel _db = new PicarasModel();
         // GET: Login
         public ActionResult Index()
         {
@@ -18,11 +17,20 @@ namespace PicarasMVCShop.Controllers
         {
             return PartialView();
         }
-        //[HttpPost]
-        //public JsonResult LoginPage(string user, string pass)
-        //{
+        [HttpPost]
+        public JsonResult LoginPage(string UserName, string Password)
+        {
+            var getUser = _db.Customers.FirstOrDefault(x => x.UserName == UserName);
+            if (getUser == null || getUser.Password != Password) return Json(false);
+            Session["user"] = getUser;
+            return Json(true);
+        }
 
-        //    //return PartialView();
-        //}
+        public ActionResult LogOut()
+        {
+            Session.Remove("user");
+            Session.Remove("cart");
+            return View("~/Views/Home/Index.cshtml");
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace Picaras.Model.Entities
 {
@@ -52,6 +53,7 @@ namespace Picaras.Model.Entities
         public string Email { get; set; }
         [Display(Name="Nombre de Usuario")]
         [Required(ErrorMessage = "Campo Nombre de Usuario Obligatorio")]
+        [Remote("DoesUserNameExist", "Register", HttpMethod = "POST", ErrorMessage = "Este usuario ya existe. Por favor elige un usuario nuevo.")]
         public string UserName { get; set; }
         [Display(Name = "Contraseña")]
         [Required(ErrorMessage = "Campo Contraseña Obligatorio")]
