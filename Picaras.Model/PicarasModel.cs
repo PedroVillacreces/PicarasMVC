@@ -16,6 +16,7 @@ namespace Picaras.Model
         public DbSet<AgentTransport> AgentTransports { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<AdminSlider> AdminSlider { get; set; }
+        public DbSet<OrderProduct> OrderProduct { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 

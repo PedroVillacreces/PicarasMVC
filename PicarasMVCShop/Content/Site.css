@@ -216,6 +216,43 @@ h1, h2, h3, h4, input, button, a, li, p, label {
     font-weight: bold;
 }
 
+.login-register {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-register .shopping-cart-wrapper a i {
+    color: white;
+    font-size: 1.5em;
+    margin-left: 30px;
+}
+
+    .login-register .shopping-cart-wrapper > a {
+        color: white;
+    }
+.dropdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dropdown-item > a {
+    color: black;
+}
+
+.dropdown-item > a:hover {
+    color: black;
+}
+
+.send-login input, .send-login a {
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.passwordUser {
+    margin-top: 5%;
+}
+
 /*.dropdown-menu {
     float: left;
     overflow: hidden;

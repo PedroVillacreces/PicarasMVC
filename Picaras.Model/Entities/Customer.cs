@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
 namespace Picaras.Model.Entities
@@ -59,9 +60,10 @@ namespace Picaras.Model.Entities
         [Required(ErrorMessage = "Campo Contraseña Obligatorio")]
         public string Password { get; set; }
         [Compare("Password", ErrorMessage = "Las contraseñas deben coincidir !")]
+        [Display(Name = "Confirmar Contraseña")]
         public string ConfirmPassword { get; set; }
         public bool Active { get; set; }
         public string CodeActive { get; set; }
-
+        public IEnumerable<Order> Orders { get; set; }
     }
 }

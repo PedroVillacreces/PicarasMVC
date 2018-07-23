@@ -222,6 +222,12 @@
     <Content Include="Views\Register\ActivateAccount.cshtml" />
     <Content Include="Views\Login\LoginUser.cshtml" />
     <Content Include="Views\Register\RegisterIcon.cshtml" />
+    <Content Include="Views\Login\UserMenu.cshtml" />
+    <Content Include="Views\Login\RememberPassword.cshtml" />
+    <Content Include="Views\Login\SendEmailToReset.cshtml" />
+    <Content Include="Views\Shared\_RememberLayout.cshtml" />
+    <Content Include="Views\Login\PasswordSent.cshtml" />
+    <Content Include="Views\Login\WrongEmail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

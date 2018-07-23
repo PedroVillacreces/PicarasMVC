@@ -10,8 +10,8 @@ namespace Picaras.Model.Entities
     {
         [Key]
         public int OrderId { get; set; }
-        [Required]
-        public Customer User { get; set; }
+        [ForeignKey("CustomerId")]
+        public virtual Customer User { get; set; }
         [Required]
         public int CustomerId { get; set; }
         [Required]
@@ -19,11 +19,20 @@ namespace Picaras.Model.Entities
         public DateTime OrderDay { get; set; }
         [Required]
         public int AgentTransportId { get; set; }
-        [Required]
-        public AgentTransport AgentTransport { get; set; }
-        [Required]
-        public int ProductId { get; set; }
-        public ICollection<Product> Products { get; set; }
+        [ForeignKey("AgentTransportId")]
+        public virtual AgentTransport AgentTransport { get; set; }
+        public ICollection<OrderProduct> Products { get; set; }
+    }
 
+    public class OrderProduct
+    {
+        [Key]
+        public int OrderProductId { get; set; }
+        [ForeignKey("OrderId")]
+        public virtual Order Order { get; set; }
+        public int OrderId { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual  Product Product { get; set; }
+        public int ProductId { get; set; }
     }
 }
