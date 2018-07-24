@@ -50,5 +50,31 @@
                 $("#dropdown-menu4", this).css("display", "none");
             });
     </script>
+
+    <script type="text/javascript">
+        $(".user1").on("click", function () {
+            $(".user2, .user3").removeClass("active");
+            $(this).addClass("active");
+            $(".personal-data").css("display", "flex");
+            $(".deliveries").css("display", "none");
+            $(".address").css("display", "none");
+        });
+
+        $(".user2").on("click", function () {
+            $(".user1, .user3").removeClass("active");
+            $(this).addClass("active");
+            $(".personal-data").css("display", "none");
+            $(".deliveries").css("display", "flex");
+            $(".address").css("display", "none");
+        });
+
+        $(".user3").on("click", function () {
+            $(".user1, .user2").removeClass("active");
+            $(this).addClass("active");
+            $(".personal-data").css("display", "none");
+            $(".deliveries").css("display", "none");
+            $(".address").css("display", "flex");
+        });
+    </script>
 </body>
 </html>

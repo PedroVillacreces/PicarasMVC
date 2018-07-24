@@ -145,16 +145,17 @@ h1, h2, h3, h4, input, button, a, li, p, label {
 }
 
 .send-car {
-    margin-top: 21%;
+    margin-top: 15%;
 }
 
 .quantity {
-    margin-top: 110px;
+    margin-top: 60px;
 }
 
 .send-car > .btn-default {
     background-color: black !important;
     color: white !important;
+    margin-left:15px;
 }
 .product-cart {
     margin-top: 5%;
@@ -261,6 +262,23 @@ h1, h2, h3, h4, input, button, a, li, p, label {
     display:flex;
     justify-content:center;
     align-items:center;
+}
+.user-tabs li > a{
+    color:black;
+}
+
+.personal-data .user-data > p, .deliveries .user-data > p ,.address .user-data > p {
+    font-size: 1.2em;
+}
+.personal-data p > span, .deliveries p > span, .address p > span {
+    font-weight: bolder;
+}
+.user-data {
+    margin-bottom: 20px;
+}
+
+.personal-data, .deliveries, .address {
+    flex-direction:column;
 }
 
 /*.dropdown-menu {

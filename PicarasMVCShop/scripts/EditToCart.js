@@ -1,19 +1,19 @@
 ﻿$(".edit-to-cart").on("click", function () {
-    var quantity = $("#Sizes").val();
-    var size = $("#Quantity").val();
-    var codeProduct = $("#ProductCode").val();
+    var pc = $(this).attr("id");
     $.ajax({
         type: "POST",
-        url: "http://localhost:52241/Shopping/EditToCart",
+        url: "http://localhost:52241/Item/GetQuantity",
         content: "application/json; charset=utf-8",
         dataType: "json",
-        data: { Size: "XL", Quantity: 2, ProductCode: 3 },
+        data: { ProductCode: pc},
         success: function (d) {
-            if (d === "Editado") {
-                document.location.href = "/Shopping";
-            }
-            else {
-                alert("Error al borrar el artículo, inténtelo de nuevo");
+            $("#quantity-edit option").remove();
+            for (var i = 0; i < d; i++) {
+                $("#quantity-edit").append($('<option>',
+                    {
+                        value: i + 1,
+                        text: i + 1
+                    }));
             }
         },
         error: function (xhr, textStatus, errorThrown) {

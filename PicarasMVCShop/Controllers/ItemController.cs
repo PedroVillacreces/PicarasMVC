@@ -7,7 +7,7 @@ using Picaras.Model.ViewModels;
 
 namespace PicarasMVCShop.Controllers
 {
-    
+
     public class ItemController : Controller
     {
         private readonly PicarasModel _db = new PicarasModel();
@@ -48,9 +48,9 @@ namespace PicarasMVCShop.Controllers
             return _db.AgentTransports;
         }
 
-        public JsonResult GetQuantity(string size)
+        public JsonResult GetQuantity(int ProductCode)
         {
-            var products = _db.Products.Count(x => x.Size == size);
+            var products = _db.Products.Find(ProductCode).Quantity;
             return Json(products, JsonRequestBehavior.AllowGet);
         }
     }

@@ -5,20 +5,53 @@
 </div>
 <div class="container">
     <ul class="nav nav-tabs user-tabs">
-        <li role="presentation" class="active"><a href="#">Datos del Usuario</a></li>
-        <li role="presentation"><a href="#">Pedidos Realizados</a></li>
-        <li role="presentation"><a href="#">Dirección de Envío</a></li>
+        <li role="presentation" class="active user1"><a href="#">Datos del Usuario</a></li>
+        <li role="presentation" class="user2"><a href="#">Pedidos Realizados</a></li>
+        <li role="presentation" class="user3"><a href="#">Dirección de Envío</a></li>
     </ul>
 </div>
 
-<div class="container">
-    <h4>Datos personales:</h4>
-    <label>Nombre: </label>
-    <p>@Model.Name</p>
-    <label>Apellidos: </label>
-    <p>@Model.LastName</p>
-    <label>Correo Electrónico: </label>
-    <p>@Model.Email</p>
-    <p>@Model.UserName</p>
+<div class="container personal-data">
+    <div class="user-data">
+        <h3>Datos personales:</h3>
+        <p><span>Nombre: </span>@Model.Name</p>
+        <p><span>Apellidos: </span>@Model.LastName</p>
+        <p><span>Correo Electrónico: </span>@Model.Email</p>
+        <p><span>Usuario: </span>@Model.UserName</p>
+        <p><span>Fecha de Nacimiento: </span>@Model.Birthday</p>
+        <p><span>Teléfono de Contacto: </span>@Model.Phone</p>
+    </div>
+    <div class="user-buttons">
+        <button class="btn btn-details">Modificar Datos</button>
+    </div>
 </div>
 
+
+<div class="container deliveries" style="display:none;">
+    <div class="user-data">
+        <h3>Ejemplo 2</h3>
+        <p><span>Nombre: </span>@Model.Name</p>
+        <p><span>Apellidos: </span>@Model.LastName</p>
+        <p><span>Correo Electrónico: </span>@Model.Email</p>
+        <p><span>Usuario: </span>@Model.UserName</p>
+        <p><span>Fecha de Nacimiento: </span>@Model.Birthday</p>
+    </div>
+    <div class="user-buttons">
+        <button class="btn btn-details">Modificar Datos</button>
+    </div>
+</div>
+
+<div class="container address" style="display:none;">
+    <div class="user-data">
+        <h3>Dirección de Envío</h3>
+        <p><span>Calle: </span>@Model.Address</p>
+        <p><span>País: </span>@Model.Country</p>
+        <p><span>Ciudad : </span>@Model.City</p>
+        <p><span>Provincia : </span>@Model.Region</p>
+        <p><span>Código Postal: </span>@Model.PostCode</p>
+
+    </div>
+    <div class="user-buttons">
+        <button class="btn btn-details">Modificar Datos</button>
+    </div>
+</div>

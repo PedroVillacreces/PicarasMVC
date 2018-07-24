@@ -3,6 +3,9 @@
 @{
     var descuento = Model.Product.OldPrice - Model.Product.Price;
 }
+<div class="container">
+    <h2 class="text-center horizontal-line">Producto: @Model.Product.Name</h2>
+</div>
 <div class="col-md-2"></div>
 <div class="col-md-4">
     <img class="img-responsive" src="@Model.Product.Picture" alt="@Model.Product.Name" />
@@ -19,27 +22,18 @@
             }
         </p>
     </div>
+    <div class="id">
+        @Html.HiddenFor(model => model.Product.ProductId, new { name = "Id", id = "Id" })
+    </div>
+    <div class="id">
+        @Html.HiddenFor(model => model.Product.ProductCode, new { name = "pc", id = "pc" })
+    </div>
     <div class="sizes">
         <div class="form-group">
             @Html.LabelFor(model => model.Sizes, "Tallas", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Sizes", new SelectList(Model.Sizes), htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Sizes", new SelectList(Model.Sizes), "Seleccciona una talla", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Sizes, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-    <div class="transporting">
-        <div class="form-group">
-            @Html.LabelFor(model => model.Transports, "Agencias Tranporte", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <select name="Transports" class="form-control" id="Transports">
-                    @foreach (var item in Model.Transports)
-                    {
-                        <option value="@item.AgentTransportId">@item.AgentName: @item.Price</option>
-                    }
-                    @Html.ValidationMessageFor(model => model.Transports, "", new { @class = "text-danger" })
-
-                </select>
             </div>
         </div>
     </div>

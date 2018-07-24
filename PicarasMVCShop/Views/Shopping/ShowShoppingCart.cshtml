@@ -27,11 +27,11 @@
                         var totalPrice = item.Product.Price * item.ShoppingCart.Quantity;
                         <tr>
                             <td>@item.Product.Name</td>
-                            <td>@item.ShoppingCart.Quantity</td>
-                            <td>@item.ShoppingCart.Size</td>
+                            <td class="qa">@item.ShoppingCart.Quantity</td>
+                            <td class="size">@item.ShoppingCart.Size</td>
                             <td>@totalPrice</td>
-                            <td><button class="btn btn-danger remove-to-cart">Eliminar</button></td>
-                            <td><button class="btn btn-warning edit-to-cart">Editar Cantidad</button></td>
+                            <td class="pc"><button class="btn btn-danger remove-to-cart" id="@item.Product.ProductId">Eliminar</button></td>
+                            <td><button class="btn btn-warning edit-to-cart" id="@item.Product.ProductId" data-toggle="modal" data-target="#myModal">Editar Cantidad</button></td>
                         </tr>
                     }
                 </tbody>
@@ -95,6 +95,37 @@
             </div>
             <div class="form-group" style="margin-top: 10px;">
                 <button class="btn btn-details finish-shopping">Finalizar Compra</button>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modifica la cantidad del artículo</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="quantity">
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="Quantity">Cantidad</label>
+                                <div class="col-md-10">
+                                    <select name="Quantity" class="form-control" id="quantity-edit">
+                                        @*@for (var i = 0; i < Model.; i++)
+                                        {
+                                            var val = i + 1;
+                                            <option value="@val">@val</option>
+                                        }*@
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
             </div>
         </div>
     }
