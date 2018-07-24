@@ -6,7 +6,7 @@
             "Usuario o Contraseña incorrectos" +
             "</div>";
         var user = $(".userName").val();
-        var pass = $(".passwordUser").val();
+        var pass = $(".password-user").val();
         $.ajax({
             url: "http://localhost:52241/Login/LoginPage",
             type: "POST",

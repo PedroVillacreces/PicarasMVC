@@ -31,11 +31,12 @@ namespace PicarasMVCShop.Controllers
         {
             customer.CodeActive = GeneratedCodeAttribute();
             customer.Active = false;
-            _db.Customers.Add(customer);
-            await _db.SaveChangesAsync().ConfigureAwait(false);
+           
             var messege = "El código de activación de la cuenta es el: " + customer.CodeActive;
             SenderEmails.Sender("Código Activación de Pícaras", messege,
                 customer.Email, "pedrovillacreces@gmail.com");
+            _db.Customers.Add(customer);
+            await _db.SaveChangesAsync().ConfigureAwait(false);
             return View("~/Views/Register/ActivateAccount.cshtml", customer);
         }
 

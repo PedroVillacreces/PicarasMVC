@@ -1,8 +1,14 @@
-﻿@model IEnumerable<Picaras.Model.Entities.Product>
+﻿
+@{
+    ViewBag.Title = "ShowBySubcategories";
+    Layout = "~/Views/Shared/_CategoriesLayout.cshtml";
+}
+
+@model IQueryable<Picaras.Model.Entities.Product>
 
 <div class="row">
     <div class="container">
-        <h2 class="text-center horizontal-line">Artículos de @ViewBag.Category</h2>
+        <h2 class="text-center horizontal-line">Artículos de @ViewBag.Subcategory</h2>
     </div>
     @foreach (var item in Model)
     {
@@ -18,3 +24,4 @@
         </div>
     }
 </div>
+

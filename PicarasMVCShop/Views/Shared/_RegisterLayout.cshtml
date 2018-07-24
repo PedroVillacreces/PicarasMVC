@@ -29,6 +29,7 @@
                 }
             </div>
         </div>
+        @Html.Partial("../Register/RegisterIcon")
     </nav>
     <header>
         <div class="logo">
@@ -42,5 +43,13 @@
     <script src="~/scripts/jquery.validate.min.js"></script>
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/scripts/respond.min.js"></script>
+    <script type="text/javascript">
+        $(".is-hoverable").hover(function () {
+            $("#dropdown-menu4", this).css("display", "block");
+        },
+            function () {
+                $("#dropdown-menu4", this).css("display", "none");
+            });
+    </script>
 </body>
 </html>

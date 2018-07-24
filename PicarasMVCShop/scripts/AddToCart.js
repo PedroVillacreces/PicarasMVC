@@ -7,7 +7,7 @@
             url: "http://localhost:52241/Shopping/AddtoCart",
             content: "application/json; charset=utf-8",
             dataType: "json",
-            data: { Size: "XL", Quantity: 3, ProductCode : 1 },
+            data: { Size: "XL", Quantity: 3, ProductCode : 3 },
             success: function (d) {
                 $("#item-counter").val(d);
                 sessionStorage.setItem("counter", d);

@@ -148,6 +148,7 @@
     <Content Include="scripts\CategoryService.js" />
     <Content Include="scripts\DeleteItemToCart.js" />
     <Content Include="scripts\EditToCart.js" />
+    <Content Include="scripts\FinishShopping.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\jquery.validate.min.js" />
@@ -222,12 +223,13 @@
     <Content Include="Views\Register\ActivateAccount.cshtml" />
     <Content Include="Views\Login\LoginUser.cshtml" />
     <Content Include="Views\Register\RegisterIcon.cshtml" />
-    <Content Include="Views\Login\UserMenu.cshtml" />
+    <Content Include="Views\Login\PasswordSent.cshtml" />
     <Content Include="Views\Login\RememberPassword.cshtml" />
     <Content Include="Views\Login\SendEmailToReset.cshtml" />
-    <Content Include="Views\Shared\_RememberLayout.cshtml" />
-    <Content Include="Views\Login\PasswordSent.cshtml" />
+    <Content Include="Views\Login\UserMenu.cshtml" />
     <Content Include="Views\Login\WrongEmail.cshtml" />
+    <Content Include="Views\Shared\_RememberLayout.cshtml" />
+    <Content Include="Views\Categories\ShowBySubcategories.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

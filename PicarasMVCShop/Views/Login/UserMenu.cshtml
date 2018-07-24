@@ -1,2 +1,24 @@
 ﻿@model Picaras.Model.Entities.Customer
+@{ Layout = "~/Views/Shared/_ShoppingLayout.cshtml"; }
+<div class="container">
+    <h2 class="text-center horizontal-line">Datos Personales del Usuario</h2>
+</div>
+<div class="container">
+    <ul class="nav nav-tabs user-tabs">
+        <li role="presentation" class="active"><a href="#">Datos del Usuario</a></li>
+        <li role="presentation"><a href="#">Pedidos Realizados</a></li>
+        <li role="presentation"><a href="#">Dirección de Envío</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <h4>Datos personales:</h4>
+    <label>Nombre: </label>
+    <p>@Model.Name</p>
+    <label>Apellidos: </label>
+    <p>@Model.LastName</p>
+    <label>Correo Electrónico: </label>
+    <p>@Model.Email</p>
+    <p>@Model.UserName</p>
+</div>
 

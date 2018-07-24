@@ -206,7 +206,7 @@ h1, h2, h3, h4, input, button, a, li, p, label {
 
 .second-nav {
     display: flex !important;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     min-height: 50px;
 }
@@ -214,6 +214,10 @@ h1, h2, h3, h4, input, button, a, li, p, label {
 .second-nav a {
     color: black;
     font-weight: bold;
+}
+
+.second-nav a:hover {
+    color: black;
 }
 
 .login-register {
@@ -251,6 +255,12 @@ h1, h2, h3, h4, input, button, a, li, p, label {
 
 .passwordUser {
     margin-top: 5%;
+}
+
+.user-tabs{
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 /*.dropdown-menu {

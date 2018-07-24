@@ -28,6 +28,7 @@
                 }
             </div>
         </div>
+        @Html.Partial("../Register/RegisterIcon")
     </nav>
     <header>
         <div class="logo">
@@ -38,7 +39,15 @@
     @RenderBody()
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/QuantityScript.js"></script>
+<script src="~/Scripts/QuantityScript.js"></script>
+    <script type="text/javascript">
+    $(".is-hoverable").hover(function () {
+            $("#dropdown-menu4", this).css("display", "block");
+        },
+        function() {
+            $("#dropdown-menu4", this).css("display", "none");
+        });
+    </script>
 </body>
 
 </html>

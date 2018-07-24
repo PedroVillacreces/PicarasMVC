@@ -17,10 +17,9 @@ namespace PicarasMVCShop.Controllers
             return View();
         }
 
-
         public ActionResult MenuHeader()
         {
-            var model = Getall();
+            var model = _db.Categories.OrderBy(x => x.Name);
             return PartialView(model);
         }
 
@@ -42,12 +41,12 @@ namespace PicarasMVCShop.Controllers
 
         private IEnumerable<Category> Getall()
         {
-            return _db.Categories;
+            return _db.Categories.OrderBy(x=>x.Name);
         }
 
-        private IEnumerable<AdminSlider> GetSlider()
+        private List<AdminSlider> GetSlider()
         {
-            return _db.AdminSlider;
+            return _db.AdminSlider.ToList();
         }
 
         private IEnumerable<Product> GetBestSeller()

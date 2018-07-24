@@ -19,5 +19,12 @@ namespace PicarasMVCShop.Controllers
             ViewBag.Category = _db.Categories.Find(id)?.Name;
             return PartialView(products);
         }
+
+        public ActionResult ShowBySubcategories(int id)
+        {
+            var products = _db.Products.Where(x => x.SubcategoryId == id);
+            ViewBag.Subcategory = _db.SubCategories.Find(id)?.Name;
+            return View(products);
+        }
     }
 }

@@ -30,7 +30,6 @@
             </div>
         </div>
         @Html.Partial("../Register/RegisterIcon")
-
     </nav>
     <header>
         <div class="logo">
@@ -52,10 +51,10 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(".is-hoverable").hover(function () {
-        $("#dropdown-menu4").css("display", "block");
-    },
+            $("#dropdown-menu4", this).css("display", "block");
+        },
         function() {
-            $("#dropdown-menu4").css("display", "none");
+            $("#dropdown-menu4", this).css("display", "none");
         });
     </script>
 </body>
