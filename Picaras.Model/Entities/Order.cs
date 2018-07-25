@@ -22,6 +22,10 @@ namespace Picaras.Model.Entities
         [ForeignKey("AgentTransportId")]
         public virtual AgentTransport AgentTransport { get; set; }
         public ICollection<OrderProduct> Products { get; set; }
+        [Required]
+        public decimal Amount { get; set; }
+        [Required]
+        public string Payments { get; set; }
     }
 
     public class OrderProduct
@@ -32,7 +36,7 @@ namespace Picaras.Model.Entities
         public virtual Order Order { get; set; }
         public int OrderId { get; set; }
         [ForeignKey("ProductId")]
-        public virtual  Product Product { get; set; }
+        public virtual Product Product { get; set; }
         public int ProductId { get; set; }
     }
 }

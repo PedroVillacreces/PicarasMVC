@@ -1,6 +1,10 @@
 ﻿$(".finish-shopping").on("click",
-    function() {
+    function () {
         var payment = $("input[name=Payment]:checked").val();
-        console.log(payment);
+        switch (payment) {
+            case "onsite":
+                $("#onsitePayment").modal("show");
+        default:
+        }
 
     });
