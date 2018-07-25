@@ -8,7 +8,7 @@
         var IVA = (double)amount * 0.21;
 
 
-        <div class="container">
+        <div class="container" style="margin-bottom:200px;">
             <h2 class="text-center horizontal-line">Estado de Carro de Compra</h2>
             <table class="table">
                 <thead>
@@ -42,16 +42,16 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         @Html.Label("Transport", "Elige Transporte")
-                        <select class="form-control" style="width: 50%">
+                        <select class="form-control transports" style="width: 50%">
 
                             @{
-                                var agentTransports = Model.FirstOrDefault()?.AgentTransport.OrderBy(x=>x.Price);
+                                var agentTransports = Model.FirstOrDefault()?.AgentTransport.OrderBy(x => x.Price);
                             }
                             @if (agentTransports != null)
                             {
                                 foreach (var item in agentTransports)
                                 {
-                                    <option value="@item.AgentTransportId">
+                                    <option value="@item.Price">
                                         @item.AgentName - @item.Price
                                     </option>
                                 }
@@ -88,9 +88,9 @@
                     <div class="total-amount">
                         <label style="margin-bottom: 15px;">Total de la Compra</label>
                         <p><strong>Total en Artículos:</strong> @amountNoIVA€</p>
-                        <p><strong>Precio Transporte:</strong> 0€</p>
-                        <p><strong>IVA 21%:</strong> @IVA€</p>
-                        <p><strong>Total a Pagar:</strong> @amount€</p>
+                        <p id="transport-price"><strong>Precio Transporte:</strong> 0€</p>
+                        <p id="iva-price"><strong>IVA 21%:</strong> @IVA€</p>
+                        <p id="total-price"><strong>Total a Pagar:</strong> @amount€</p>
                     </div>
                 </div>
             </div>
@@ -100,39 +100,56 @@
             </div>
         </div>
         <!-- Modal -->
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Modifica la cantidad del artículo</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-2" for="Quantity">Cantidad</label>
-                                                    <div class="col-md-10 items-edit">
-                                                    <input class="hidden-id" type="hidden"/>
-                                                        <select name="Quantity" class="form-control" id="quantity-edit">
-                                                            @*@for (var i = 0; i < Model.; i++)
-                                                                {
-                                                                    var val = i + 1;
-                                                                    <option value="@val">@val</option>
-                                                                }*@
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                <button type="button" class="btn btn-primary save-edit">Guardar Cambios</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                }
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modifica la cantidad del artículo</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="Quantity">Cantidad</label>
+                            <div class="col-md-10 items-edit">
+                                <input class="hidden-id" type="hidden" />
+                                <select name="Quantity" class="form-control" id="quantity-edit">
+                                    @*@for (var i = 0; i < Model.; i++)
+                                        {
+                                            var val = i + 1;
+                                            <option value="@val">@val</option>
+                                        }*@
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary save-edit">Guardar Cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                                else
-                                {
-                                    <h2 class="text-center quantity">Uppppsss!!! No hay productos en la cesta</h2>
-                                }
+        <script type="text/javascript">
+            $(".transports").change(function () {
+                var getPrice = $(".transports").val().replace(",", ".");                
+                var priceIva = getPrice * 0.21;
+                var oldTotal = "@amount".replace(",", ".");
+                var currentIva = "@IVA".replace(",", ".");
+                var ivaPrice = +currentIva + +priceIva;                
+                var currentTotal = +oldTotal + +getPrice;
+                $("#transport-price").text("Precio del Transporte: " + getPrice.replace(".", ","));
+                $("#total-price").val(currentTotal);
+                $("#iva-price").val(currentIva);
+
+            });
+        </script>
+    }
+
+    else
+    {
+        <h2 class="text-center quantity">Uppppsss!!! No hay productos en la cesta</h2>
+    }
 }
+
+

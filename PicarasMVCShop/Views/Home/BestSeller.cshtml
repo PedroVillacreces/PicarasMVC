@@ -10,7 +10,10 @@
             <div class="thumbnail">
                 <img src="@item.Picture" alt="@item.Name">
                 <div class="caption">
-                    <h3>@item.Name</h3>
+                    <div class="name-price">
+                        <h3>@item.Name</h3>
+                        <p>@item.Price€</p>
+                    </div>                   
                     <p>@item.Description</p>
                     @Html.ActionLink("Detalles", "Index", "Item", new { id=@item.ProductId }, new { @class = "btn btn-info btn-details" })
                 </div>

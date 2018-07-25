@@ -291,6 +291,28 @@ h1, h2, h3, h4, input, button, a, li, p, label {
 .navbar{
     border-radius:0 !important;
 }
+
+.footer {
+    /*position: absolute !important;*/
+    /*right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;*/
+    /*position: absolute !important;
+    right: 0;
+    bottom: 0;
+    left: 0;*/
+}
+
+.name-price{
+    display:flex;
+    justify-content:space-between;
+}
+
+    .name-price p {
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
 /*.dropdown-menu {
     float: left;
     overflow: hidden;

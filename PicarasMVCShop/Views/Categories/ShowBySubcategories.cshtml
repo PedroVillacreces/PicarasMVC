@@ -7,7 +7,7 @@
 @model IQueryable<Picaras.Model.Entities.Product>
 @if (Model.Any())
 {
-    <div class="row">
+    <div class="row" style="margin-bottom:200px;">
         <div class="container">
             <h2 class="text-center horizontal-line">Artículos de @ViewBag.Subcategory</h2>
             @foreach (var item in Model)
@@ -16,9 +16,12 @@
                     <div class="thumbnail">
                         <img src="@item.Picture" alt="@item.Name">
                         <div class="caption">
-                            <h3>@item.Name</h3>
+                            <div class="name-price">
+                                <h3>@item.Name</h3>
+                                <p>@item.Price€</p>
+                            </div>
                             <p>@item.Description</p>
-                            @Html.ActionLink("Detalles", "Index", "Item", new {id = @item.ProductId}, new {@class = "btn btn-info"})
+                            @Html.ActionLink("Detalles", "Index", "Item", new { id = @item.ProductId }, new { @class = "btn btn-info btn-details" })
                         </div>
                     </div>
                 </div>
@@ -30,4 +33,3 @@ else
 {
     <h2 class="text-center quantity">Uppppsss!!! No hay productos en la categoría: @ViewBag.Subcategory</h2>
 }
-

@@ -3,6 +3,7 @@
     var size = $("#Sizes").val();
     var productCode = $("#Id").val();
     var codeProduct = $("#ProductCode").val();
+    if (size !== "") {
         $.ajax({
             type: "POST",
             url: "http://localhost:52241/Shopping/AddtoCart",
@@ -16,8 +17,17 @@
                 $("#item-counter").text(d);
                 document.location.href = "/";
             },
-            error: function(xhr, textStatus, errorThrown) {
+            error: function (xhr, textStatus, errorThrown) {
                 console.log(textStatus);
             }
         });
+    }
+    else {
+        $(".alert-danger").remove();
+        var message = '<div class="alert alert-danger fade in">' +
+            '<strong>Error! </strong>Tienes que elegir una talla del producto' +
+            '</div>';;
+        $(".sizes").append(message);
+    }
+        
 });
