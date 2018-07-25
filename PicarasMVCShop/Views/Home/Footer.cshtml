@@ -1,0 +1,42 @@
+﻿@using Picaras.Model.Entities
+@model IEnumerable<Category>
+
+<div class="footer container">
+    <div class="show-categories col-md-3">
+        <h4>Menú Categorías</h4>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li style="list-style-type: none;"><a href="/Categories/Index/@item.CategoryId"><i class="far fa-calendar-check"></i> @item.Name</a></li>
+            }
+        </ul>
+    </div>
+    <div class="social-media-footer col-md-3">
+        <h4>Redes Sociales</h4>
+        <ul style="list-style-type: none;">
+            <li><i class="fab fa-facebook-square"></i> Facebook</li>
+            <li><i class="fab fa-twitter-square"> </i>Twitter</li>
+            <li><i class="fab fa-instagram"></i> Instagram</li>
+            <li><i class="fab fa-linkedin"></i> Linkedin</li>
+            <li><i class="fab fa-whatsapp-square"></i> Whatsapp</li>
+        </ul>
+    </div>
+    <div class="contact-us social-media-footer col-md-3">
+        <h4>Encuéntranos: </h4>
+        <ul style="list-style-type: none; padding-left:10px;">
+            <li><i class="fas fa-map-marker-alt"></i> Calle dkjhkadkja 45</li>
+            <li><i class="fas fa-map-marker-alt"></i> Telefono: 6559999990</li>
+            <li><i class="fas fa-map-marker-alt"></i> Correo Electrónico: admin@picaras.es</li>
+        </ul>
+    </div>
+    <div class="payments social-media-footer col-md-3">
+        <h4>Tipos de Pago</h4>
+        <ul style="list-style-type: none;">
+            <li><i class="fab fa-paypal"></i> Paypal</li>
+            <li><i class="fas fa-credit-card"></i> Visa</li>
+            <li><i class="fas fa-university"></i> Transferencia Bancaria</li>
+            <li><i class="fas fa-hand-holding-usd"></i> Pago directo en tienda</li>
+        </ul>
+    </div>
+</div>
+<div class="container"><p style="color:white;">&copy; @DateTime.Now.Year - Pícaras Closet, todos los derechos reservados. Web creada por @@PVillacreces</p></div>

@@ -58,6 +58,12 @@ namespace PicarasMVCShop.Controllers
         {
             return _db.Products.OrderBy(x => x.CreateDateTime).Take(16).AsEnumerable().DistinctBy(x => x.ProductCode); ;
         }
-        
+
+        public ActionResult Footer()
+        {
+            var model = Getall();
+            return PartialView(model);
+        }
+
     }
 }

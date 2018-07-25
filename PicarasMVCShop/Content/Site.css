@@ -7,7 +7,6 @@
 
 body {
     padding-top: 40px;
-    padding-bottom: 20px;
 }
 
 h1, h2, h3, h4, input, button, a, li, p, label {
@@ -281,6 +280,17 @@ h1, h2, h3, h4, input, button, a, li, p, label {
     flex-direction:column;
 }
 
+.show-categories li a, .show-categories h4 {
+    color:white;
+}
+
+.social-media-footer li i, .social-media-footer li, .social-media-footer h4{
+     color:white;
+}
+
+.navbar{
+    border-radius:0 !important;
+}
 /*.dropdown-menu {
     float: left;
     overflow: hidden;

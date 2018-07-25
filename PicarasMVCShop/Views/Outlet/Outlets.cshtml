@@ -5,10 +5,10 @@
 <div class="row">
     <div class="container">
         <h2 class="text-center horizontal-line">Productos en Outlet</h2>
-    </div>
+ 
     @foreach (var item in Model)
     {
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <img src="@item.Picture" alt="@item.Name">
                 <div class="caption">
@@ -19,4 +19,5 @@
             </div>
         </div>
     }
+    </div>
 </div>

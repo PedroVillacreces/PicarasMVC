@@ -42,15 +42,15 @@
         @Html.Action("Slider", "Home")
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody()
+</div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<footer class="navbar navbar-inverse footer" style="margin-top:15px;">
+    @Html.Action("Footer", "Home")
+</footer>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(".is-hoverable").hover(function () {

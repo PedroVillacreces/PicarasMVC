@@ -230,6 +230,7 @@
     <Content Include="Views\Login\WrongEmail.cshtml" />
     <Content Include="Views\Shared\_RememberLayout.cshtml" />
     <Content Include="Views\Categories\ShowBySubcategories.cshtml" />
+    <Content Include="Views\Home\Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

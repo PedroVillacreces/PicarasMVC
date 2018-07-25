@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 using Picaras.Model;
 using Picaras.Model.Entities;
@@ -59,6 +60,43 @@ namespace PicarasMVCShop.Controllers
         public ActionResult RememberPassword()
         {
             return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult EditPersonalData(Customer customer)
+        {
+            var user = _db.Customers.Find(customer.CustomerId);
+            if (user != null)
+            {
+                user.Name = customer.Name;
+                user.LastName = customer.LastName;
+                user.Birthday = customer.Birthday;
+                user.UserName = customer.UserName;
+                user.Email = customer.Email;
+                user.Phone = customer.Phone;
+                _db.Entry(user).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+           
+            return View("~/Views/Login/UserMenu.cshtml", user);
+        }
+
+        [HttpPost]
+        public ActionResult EditAddressData(Customer customer)
+        {
+            var user = _db.Customers.Find(customer.CustomerId);
+            if (user != null)
+            {
+                user.Address = customer.Address;
+                user.City = customer.City;
+                user.Region = customer.Region;
+                user.PostCode = customer.PostCode;
+                user.Country = customer.Country;
+                _db.Entry(user).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+
+            return View("~/Views/Login/UserMenu.cshtml", user);
         }
     }
 }

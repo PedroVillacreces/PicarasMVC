@@ -53,5 +53,15 @@ namespace PicarasMVCShop.Controllers
             var products = _db.Products.Find(ProductCode).Quantity;
             return Json(products, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetQuantityBySize(int pc, string size)
+        {
+            var products = _db.Products.FirstOrDefault(x => x.ProductCode == pc && x.Size == size);
+            return Json(new 
+            {
+                Id = products.ProductId,
+                Quantity = products.Quantity
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
