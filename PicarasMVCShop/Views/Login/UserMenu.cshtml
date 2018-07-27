@@ -32,13 +32,38 @@
 
 <div class="body-content deliveries" style="display:none;">
     <div class="user-data">
-        <h3>Ejemplo 2</h3>
-        
+        <h3>Pedidos del Cliente</h3>
+        <div class="table-responsive">
+            <table class="table-condensed">
+                <thead>
+                    <tr>
+                        <th>Número de Pedido</th>
+                        <th>Fecha Pedido</th>
+                        <th>Transporte</th>
+                        <th>Importe Total</th>
+                        <th>Estado del Pedido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Orders)
+                    {
+                        <tr>
+                            <td>@item.OrderId</td>
+                            <td>@item.OrderDay</td>
+                            <td>@item.AgentTransport.AgentName</td>
+                            <td>@item.Amount €</td>
+                            <td>@item.Status</td>
+                            <td><button class="btn btn-warning show-order" id="@item.OrderId" data-toggle="modal" data-target="#orderModal">Revisar Pedido</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div class="user-buttons">
+            <button class="btn btn-details">Modificar Datos</button>
+        </div>
     </div>
-    <div class="user-buttons">
-        <button class="btn btn-details">Modificar Datos</button>
-    </div>
-</div>
 
 <div class="body-content address" style="display:none;">
     <div class="user-data">
@@ -192,6 +217,19 @@
                         <button type="submit" class="btn btn-primary save-edit">Guardar Cambios</button>
                     </div>
                 }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="orderModalLabel">Pedido Número: </h4>
+            </div>
+            <div class="modal-body" id="id-order">                 
             </div>
         </div>
     </div>

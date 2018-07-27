@@ -39,16 +39,16 @@ namespace PicarasMVCShop.Controllers
 
         public ActionResult UserMenu()
         {
-            var user = (Customer) Session["user"];
+            var user = (Customer)Session["user"];
             var orders = _db.Orders.Where(x => x.CustomerId == user.CustomerId);
 
             return PartialView(new CustomersOdersViewModel
             {
-               Customer = user,
-               Orders = orders
+                Customer = user,
+                Orders = orders
             });
         }
-  
+
         [HttpPost]
         public ActionResult SendEmailToReset(string email)
         {
@@ -84,7 +84,7 @@ namespace PicarasMVCShop.Controllers
                 _db.Entry(user).State = EntityState.Modified;
                 _db.SaveChanges();
             }
-           
+
             return View("~/Views/Login/UserMenu.cshtml", user);
         }
 
@@ -104,6 +104,22 @@ namespace PicarasMVCShop.Controllers
             }
 
             return View("~/Views/Login/UserMenu.cshtml", user);
+        }
+
+        [HttpPost]
+        public JsonResult ShowDelivery(int id)
+        {
+            var order = _db.Orders.Find(id);
+            var orderProducts = _db.OrderProduct.Where(x => x.OrderId == id);
+            var list = JsonConvert.SerializeObject(model,
+    Formatting.None,
+    new JsonSerializerSettings()
+    {
+        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    });
+
+            return Content(orderProducts, "application/json");
+            
         }
     }
 }

@@ -80,5 +80,23 @@
             $(".address").css("display", "flex");
         });
     </script>
+    <script type="text/javascript">
+        $("#orderModal").on("click", function () {
+            var id = $(".show-order").attr("id");
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:52241/Login/ShowDelivery",
+                content: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { id: id },
+                success: function (d) {
+                    console.log(d);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace Picaras.Model.Entities
 {
     [Table("Orders")]
+    [DataContract(IsReference = true)]
     public class Order
     {
         [Key]
@@ -27,8 +29,10 @@ namespace Picaras.Model.Entities
         public decimal Amount { get; set; }
         [Required]
         public string Payments { get; set; }
+        [Required]        
+        public string Status { get; set; } = "Enviado";
     }
-
+    [DataContract(IsReference = true)]
     public class OrderProduct
     {
         [Key]
