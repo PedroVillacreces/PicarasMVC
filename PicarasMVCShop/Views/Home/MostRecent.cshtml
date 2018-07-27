@@ -1,12 +1,10 @@
 ﻿@using Picaras.Model.Entities
 @model IEnumerable<Product>
-
-
-<div class="row" style="margin-bottom:80px;">
+<div class="container" style="margin-bottom:40px;">
     <h4 class="text-center horizontal-line">ARTÍCULOS DE NUEVA TEMPORADA</h4>
     @foreach (var item in Model)
     {
-        <div class="col-sm-6 col-md-4" style="margin-bottom: 18%;">
+        <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <img src="@item.Picture" alt="@item.Name">
                 <div class="caption">
@@ -21,3 +19,4 @@
         </div>
     }
 </div>
+    

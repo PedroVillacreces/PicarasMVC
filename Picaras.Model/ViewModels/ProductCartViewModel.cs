@@ -12,5 +12,6 @@ namespace Picaras.Model.ViewModels
         public Product Product { get; set; }
         public ShoppingCart ShoppingCart { get; set; }
         public IList<AgentTransport> AgentTransport { get; set; }
+       
     }
 }

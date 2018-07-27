@@ -56,7 +56,7 @@ namespace PicarasMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AgentTransportId = new SelectList(db.AgentTransports, "AgentTransportId", "AgentName", order.AgentTransportId);
+            ViewBag.AgentTransportId = new SelectList(db.AgentTransports, "AgentTransportId", "AgentName", order);
             ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", order.CustomerId);
             return View(order);
         }

@@ -4,6 +4,10 @@
         switch (payment) {
             case "onsite":
                 $("#onsitePayment").modal("show");
+                break;
+            case "bankTransfer":
+                $("#bankPayment").modal("show");
+                break;
         default:
         }
 

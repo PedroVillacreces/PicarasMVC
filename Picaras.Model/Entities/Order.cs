@@ -17,6 +17,7 @@ namespace Picaras.Model.Entities
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime OrderDay { get; set; }
+        public decimal AgentPrice { get; set; }
         [Required]
         public int AgentTransportId { get; set; }
         [ForeignKey("AgentTransportId")]
@@ -38,5 +39,6 @@ namespace Picaras.Model.Entities
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
         public int ProductId { get; set; }
+        public int Quantity { get; set; }
     }
 }

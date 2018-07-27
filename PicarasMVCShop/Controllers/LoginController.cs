@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Picaras.Model;
 using Picaras.Model.Entities;
+using Picaras.Model.ViewModels;
 using PicarasMVCShop.Helpers;
 
 namespace PicarasMVCShop.Controllers
@@ -39,7 +40,13 @@ namespace PicarasMVCShop.Controllers
         public ActionResult UserMenu()
         {
             var user = (Customer) Session["user"];
-            return PartialView(user);
+            var orders = _db.Orders.Where(x => x.CustomerId == user.CustomerId);
+
+            return PartialView(new CustomersOdersViewModel
+            {
+               Customer = user,
+               Orders = orders
+            });
         }
   
         [HttpPost]

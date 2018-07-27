@@ -2,177 +2,219 @@
 @using Picaras.Model.ViewModels
 @model IEnumerable<ProductCartViewModel>
 @{
-    var customer = (Customer) Session["user"];
+    var customer = (Customer)Session["user"];
     if (Model != null && Model.Any())
     {
         var amount = Model.Select((x => x.Product.Price * x.ShoppingCart.Quantity)).Sum();
         var amountNoIVA = (double)amount - ((double)amount * 0.21);
         var IVA = (double)amount * 0.21;
 
-
-        <div class="container" style="margin-bottom:200px;">
-            <h2 class="text-center horizontal-line">Estado de Carro de Compra</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Artículo</th>
-                        <th>Cantidad</th>
-                        <th>Talla</th>
-                        <th>Precio</th>
-                        <th>Eliminar</th>
-                        <th>Modificar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        var totalPrice = item.Product.Price * item.ShoppingCart.Quantity;
+        <div class="body-container">
+            <div class="container">
+                <h2 class="text-center horizontal-line">Estado de Carro de Compra</h2>
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>@item.Product.Name</td>
-                            <td class="qa">@item.ShoppingCart.Quantity</td>
-                            <td class="size">@item.ShoppingCart.Size</td>
-                            <td>@totalPrice</td>
-                            <td class="pc"><button class="btn btn-danger remove-to-cart" id="@item.Product.ProductId">Eliminar</button></td>
-                            <td><button class="btn btn-warning edit-to-cart" id="@item.Product.ProductId" data-toggle="modal" data-target="#myModal">Editar Cantidad</button></td>
+                            <th>Artículo</th>
+                            <th>Cantidad</th>
+                            <th>Talla</th>
+                            <th>Precio</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-            <div class="row" style="border: 1px solid #ddd; padding: 10px;">
-                <h4 style="margin-bottom: 20px;">Datos del Pedido</h4>
-                <div class="col-md-1"></div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        @Html.Label("Transport", "Elige Transporte")
-                        <select class="form-control transports" style="width: 50%">
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                {
+                    var totalPrice = item.Product.Price * item.ShoppingCart.Quantity;
+                            <tr>
+                                <td>@item.Product.Name</td>
+                                <td class="qa">@item.ShoppingCart.Quantity</td>
+                                <td class="size">@item.ShoppingCart.Size</td>
+                                <td>@totalPrice</td>
+                                <td class="pc"><button class="btn btn-danger remove-to-cart" id="@item.Product.ProductId">Eliminar</button></td>
+                                <td><button class="btn btn-warning edit-to-cart" id="@item.Product.ProductId" data-toggle="modal" data-target="#myModal">Editar Cantidad</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="row" style="border: 1px solid #ddd; padding: 10px;">
+                    <h4 style="margin-bottom: 20px;">Datos del Pedido</h4>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            @Html.Label("Transport", "Elige Transporte")
+                            <select class="form-control transports" style="width: 50%">
 
-                            @{
-                                var agentTransports = Model.FirstOrDefault()?.AgentTransport.OrderBy(x => x.Price);
-                            }
-                            @if (agentTransports != null)
-                            {
-                                foreach (var item in agentTransports)
-                                {
-                                    <option value="@item.Price">
-                                        @item.AgentName - @item.Price
-                                    </option>
+                                @{
+                                    var agentTransports = Model.FirstOrDefault()?.AgentTransport.OrderBy(x => x.Price);
                                 }
-                            }
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group payment-radio">
-                        @Html.Label("Payment", "Elige Tipo de Pago")
-                        <div class="radio">
-                            <label>
-                                @Html.RadioButton("Payment", "creditCard")Tarjeta de Crédito
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                @Html.RadioButton("Payment", "paypal")Paypal
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                @Html.RadioButton("Payment", "bankTransfer")Transferencia Bancaria
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                @Html.RadioButton("Payment", "onsite")Pago en Tienda
-                            </label>
+                                @if (agentTransports != null)
+                                {
+                                    foreach (var item in agentTransports)
+                                    {
+                                        <option value="@item.Price">
+                                            @item.AgentName - @item.Price
+                                        </option>
+                                    }
+                                }
+                            </select>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="total-amount">
-                        <label style="margin-bottom: 15px;">Total de la Compra</label>
-                        <p><strong>Total en Artículos:</strong> @amountNoIVA€</p>
-                        <p id="transport-price"><strong>Precio Transporte:</strong> 0€</p>
-                        <p id="iva-price"><strong>IVA 21%:</strong> @IVA€</p>
-                        <p id="total-price"><strong>Total a Pagar:</strong> @amount€</p>
+                    <div class="col-md-3">
+                        <div class="form-group payment-radio">
+                            @Html.Label("Payment", "Elige Tipo de Pago")
+                            <div class="radio">
+                                <label>
+                                    @Html.RadioButton("Payment", "creditCard")Tarjeta de Crédito
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    @Html.RadioButton("Payment", "paypal")Paypal
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    @Html.RadioButton("Payment", "bankTransfer")Transferencia Bancaria
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    @Html.RadioButton("Payment", "onsite")Pago en Tienda
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="total-amount">
+                            <label style="margin-bottom: 15px;">Total de la Compra</label>
+                            <p><strong>Total en Artículos:</strong> @amountNoIVA€</p>
+                            <p id="transport-price"><strong>Precio Transporte:</strong> 0€</p>
+                            <p id="iva-price"><strong>IVA 21%:</strong> @IVA€</p>
+                            <p id="total-price"><strong>Total a Pagar:</strong> @amount€</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-1"></div>
-            <div class="form-group" style="margin-top: 10px;">
-                <button class="btn btn-details finish-shopping">Finalizar Compra</button>
+                <div class="col-md-1"></div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <button class="btn btn-details finish-shopping">Finalizar Compra</button>
+                </div>
             </div>
         </div>
         <!-- Modal -->
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Modifica la cantidad del artículo</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-2" for="Quantity">Cantidad</label>
-                                                    <div class="col-md-10 items-edit">
-                                                    <input class="hidden-id" type="hidden"/>
-                                                        <select name="Quantity" class="form-control" id="quantity-edit">
-                                                            @*@for (var i = 0; i < Model.; i++)
-                                                                {
-                                                                    var val = i + 1;
-                                                                    <option value="@val">@val</option>
-                                                                }*@
-                                                        </select>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Modifica la cantidad del artículo</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-2" for="Quantity">Cantidad</label>
+                                                        <div class="col-md-10 items-edit">
+                                                            <input class="hidden-id" type="hidden" />
+                                                            <select name="Quantity" class="form-control" id="quantity-edit"></select>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                <button type="button" class="btn btn-primary save-edit">Guardar Cambios</button>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                    <button type="button" class="btn btn-primary save-edit">Guardar Cambios</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                }
+                                    <div class="modal fade" id="onsitePayment" tabindex="-1" role="dialog" aria-labelledby="onsitePaymentLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="onsitePaymentLabel">Finalizar Pedido para recoger en tienda</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Le recordamos que dispone de 7 días para recoger su pedido en tienda</p>
+                                                    <p>Podrá recoger en la tienda física en: </p>
+                                                    <p><strong>Calle XXXX Bajo 7</strong></p>
+                                                    <p><strong>Puertollano</strong></p>
+                                                    <p><strong>Ciudad Real</strong></p>
+                                                    <h4><strong>¡Agradecerle su compra! Saludos desde el equipo de Pícaras</strong></h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                    <button type="button" class="btn btn-primary save-finish">Finalizar Pedido</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="bankPayment" tabindex="-1" role="dialog" aria-labelledby="bankPaymentLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="bankPaymentLabel">Finalizar Pedido pago por transferencia</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p><strong>Le recordamos que dispone de 7 días para hacer el pago del pedido</strong></p>
+                                                    <p><strong>Al finalizar el pedido le mandaremos un correo a su dirección de correo electrónico con el número de cuenta</strong></p>
+                                                    <p>Para finalizar la compra pulsa <strong>Finalizar Pedido</strong></p>
+                                                    <h4><strong>¡Agradecerle su compra! Saludos desde el equipo de Pícaras</strong></h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                    <button type="button" class="btn btn-primary save-finish">Finalizar Pedido</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-        <script type="text/javascript">
-            $(".transports").change(function () {
-                var getPrice = $(".transports").val().replace(",", ".");                
-                var priceIva = getPrice * 0.21;
-                var oldTotal = "@amount".replace(",", ".");
-                var currentIva = "@IVA".replace(",", ".");
-                $("#iva-price").val(currentIva);
-            });
 
-                $("#total-price").val(currentTotal);
-                $("#transport-price").text("Precio del Transporte: " + getPrice.replace(".", ","));
-                var currentTotal = +oldTotal + +getPrice;
-                var ivaPrice = +currentIva + +priceIva;                
-        </script>
-                                else
-                                {
-                                    <h2 class="text-center quantity">Uppppsss!!! No hay productos en la cesta</h2>
-                                }
-    <script type="text/javascript">
-        $(".save-finish").on("click",
-            function () {
-                var transports = $("input[name=Payment]:checked").val();
-                var payment = $("input[name=Payment]:checked").val();
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:52241/Deliveries/SavedOrder",
-                    content: "application/json; charset=utf-8",
-                    dataType: "json",
-                    data: {CustomerId:@customer, OrderDay: $.now(),   },
-                    success: function (d) {
-            
-                        document.location.href = "/";
-                    },
-                    error: function (xhr, textStatus, errorThrown) {
-                        console.log(textStatus);
-                    }
-                });
+                                    <script type="text/javascript">
+                                        $(".transports").change(function () {
+                                            var getPrice = $(".transports").val().replace(",", ".");
+                                            var priceIva = getPrice * 0.21;
+                                            var oldTotal = "@amount".replace(",", ".");
+                                            var currentIva = "@IVA".replace(",", ".");
+                                            $("#iva-price").val(currentIva);
+                                            $("#total-price").val(currentTotal);
+                                            $("#transport-price").html("<strong>Precio del Transporte:</strong> " + getPrice.replace(".", ",") + "€");
+                                            var currentTotal = +oldTotal + +getPrice;
+                                            var ivaPrice = +currentIva + +priceIva;
+                                            $("#iva-price").html("<strong>IVA 21%: </strong>" + ivaPrice.toString().replace(".", ",") + "€");
+                                            $("#total-price").html("<strong>Total a Pagar: </strong>" + currentTotal.toString().replace(".", ",") + "€");
+                                        });
+                                    </script>
 
-            });
-    </script>
+                                    <script type="text/javascript">
+                                        $(".save-finish").on("click",
+                                            function () {
+                                                var transports = $(".transports").val();
+                                                var payment = $("input[name=Payment]:checked").val();
+                                                var Order = {
+                                                    AgentPrice: transports,
+                                                    Payments: payment
+                                                };
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "http://localhost:52241/Deliveries/SavedOrder",
+                                                    content: "application/json; charset=utf-8",
+                                                    dataType: "json",
+                                                    data: { orderProduct: Order },
+                                                    success: function (d) {
+                                                        document.location.href = "/";
+                                                    },
+                                                    error: function (xhr, textStatus, errorThrown) {
+                                                        console.log(textStatus);
+                                                    }
+                                                });
+                                            });
+                                    </script>
+                                    }
+
+                                    else
+                                    {
+                                        <h2 class="text-center quantity">Uppppsss!!! No hay productos en la cesta</h2>
+                                    }
+
 }
-
-
