@@ -1,6 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Schema;
 using Picaras.Model;
 using Picaras.Model.Entities;
 using Picaras.Model.ViewModels;
@@ -109,17 +112,20 @@ namespace PicarasMVCShop.Controllers
         [HttpPost]
         public JsonResult ShowDelivery(int id)
         {
-            var order = _db.Orders.Find(id);
+            _db.Configuration.ProxyCreationEnabled = false;
             var orderProducts = _db.OrderProduct.Where(x => x.OrderId == id);
-            var list = JsonConvert.SerializeObject(model,
-    Formatting.None,
-    new JsonSerializerSettings()
-    {
-        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-    });
+            var returnOrderProducts = new List<OrderProduct>();
+            foreach (var item in orderProducts)
+            {
+                returnOrderProducts.Add(new OrderProduct
+                {
+                    Quantity = item.Quantity,
+                    Product = _db.Products.Find(item.ProductId),
+                    Order = _db.Orders.Find(item.OrderId)
+                });
+            }
+            return Json(returnOrderProducts, JsonRequestBehavior.AllowGet);
 
-            return Content(orderProducts, "application/json");
-            
         }
     }
 }

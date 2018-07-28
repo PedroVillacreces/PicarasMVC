@@ -81,8 +81,8 @@
         });
     </script>
     <script type="text/javascript">
-        $("#orderModal").on("click", function () {
-            var id = $(".show-order").attr("id");
+        $(".show-order").on("click", function () {
+            var id = $(this).attr("id");
             $.ajax({
                 type: "POST",
                 url: "http://localhost:52241/Login/ShowDelivery",
