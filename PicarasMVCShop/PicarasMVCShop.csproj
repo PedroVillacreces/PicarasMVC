@@ -236,6 +236,7 @@
     <Content Include="Views\Shared\_RememberLayout.cshtml" />
     <Content Include="Views\Categories\ShowBySubcategories.cshtml" />
     <Content Include="Views\Home\Footer.cshtml" />
+    <Content Include="Views\Login\ShowDelivery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

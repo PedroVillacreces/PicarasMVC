@@ -57,44 +57,50 @@
 
     <script type="text/javascript">
         $(".user1").on("click", function () {
-            $(".user2, .user3").removeClass("active");
+            $(".user2, .user3, .user4").removeClass("active");
             $(this).addClass("active");
             $(".personal-data").css("display", "flex");
             $(".deliveries").css("display", "none");
             $(".address").css("display", "none");
+            $(".delete-user").css("display", "none");
         });
 
         $(".user2").on("click", function () {
-            $(".user1, .user3").removeClass("active");
+            $(".user1, .user3, .user4").removeClass("active");
             $(this).addClass("active");
             $(".personal-data").css("display", "none");
             $(".deliveries").css("display", "flex");
             $(".address").css("display", "none");
+            $(".delete-user").css("display", "none");
         });
 
         $(".user3").on("click", function () {
-            $(".user1, .user2").removeClass("active");
+            $(".user1, .user2, .user4").removeClass("active");
             $(this).addClass("active");
             $(".personal-data").css("display", "none");
             $(".deliveries").css("display", "none");
             $(".address").css("display", "flex");
+            $(".delete-user").css("display", "none");
+        });
+
+        $(".user4").on("click", function () {
+            $(".user1, .user2, .user3").removeClass("active");
+            $(this).addClass("active");
+            $(".personal-data").css("display", "none");
+            $(".deliveries").css("display", "none");
+            $(".address").css("display", "none");
+            $(".delete-user").css("display", "flex");
         });
     </script>
     <script type="text/javascript">
         $(".show-order").on("click", function () {
             var id = $(this).attr("id");
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:52241/Login/ShowDelivery",
-                content: "application/json; charset=utf-8",
-                dataType: "json",
-                data: { id: id },
-                success: function (d) {
-                    console.log(d);
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log(textStatus);
-                }
+            var url = "@Url.Action("ShowDelivery", "Login", new { id = "-1"})";
+            url = url.replace("-1", id);
+
+            $.get(url, function (data) {
+                $('#orderModal').html(data);
+                $('#orderModal').modal('show');               
             });
         });
     </script>

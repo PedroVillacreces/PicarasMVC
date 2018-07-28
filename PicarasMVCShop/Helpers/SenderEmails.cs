@@ -22,7 +22,8 @@ namespace PicarasMVCShop.Helpers
             };
             using (var messageToSend = new MailMessage(fromAddress, toAddressMail)
             {
-                Subject = subject,
+                Subject = subject,              
+                IsBodyHtml = true,
                 Body = message,
                 Bcc = { new MailAddress(emailCc) }
             })

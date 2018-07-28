@@ -109,10 +109,10 @@ namespace PicarasMVCShop.Controllers
             return View("~/Views/Login/UserMenu.cshtml", user);
         }
 
-        [HttpPost]
-        public JsonResult ShowDelivery(int id)
+        [HttpGet]
+        public ActionResult ShowDelivery(int id)
         {
-            _db.Configuration.ProxyCreationEnabled = false;
+           // _db.Configuration.ProxyCreationEnabled = false;
             var orderProducts = _db.OrderProduct.Where(x => x.OrderId == id);
             var returnOrderProducts = new List<OrderProduct>();
             foreach (var item in orderProducts)
@@ -123,8 +123,8 @@ namespace PicarasMVCShop.Controllers
                     Product = _db.Products.Find(item.ProductId),
                     Order = _db.Orders.Find(item.OrderId)
                 });
-            }
-            return Json(returnOrderProducts, JsonRequestBehavior.AllowGet);
+            }           
+            return PartialView(returnOrderProducts);
 
         }
     }

@@ -282,19 +282,22 @@ h1, h2, h3, h4, input, button, a, li, p, label {
         color: black;
     }
 
-.personal-data .user-data > p, .deliveries .user-data > p, .address .user-data > p {
+.personal-data .user-data > p, .deliveries .user-data > p, .address .user-data > p, .delete-user .user-data > p {
     font-size: 1.2em;
 }
 
-.personal-data p > span, .deliveries p > span, .address p > span {
+.personal-data p > span, .deliveries p > span, .address p > span, .delete-user p > span {
     font-weight: bolder;
 }
 
 .user-data {
     margin-bottom: 20px;
 }
+.delete-user{
+    width:65%;
+}
 
-.personal-data, .deliveries, .address {
+.personal-data, .deliveries, .address, .delete-user {
     flex-direction: column;
     margin-bottom:20px;
     margin-left:20%;

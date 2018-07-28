@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using MoreLinq;
 using Picaras.Model;
 using Picaras.Model.Entities;
 
@@ -25,7 +24,9 @@ namespace PicarasMVCShop.Controllers
 
         private IEnumerable<Product> GetOutletItems()
         {
-            return _db.Products.Where(x => x.IsOutlet).OrderBy(x=>x.CategoryId);
+            return _db.Products.Where(x => x.IsOutlet && x.Quantity > 0)
+                .DistinctBy(x => x.ProductCode)
+                .OrderBy(x=>x.Price);
         }
     }
 }

@@ -51,12 +51,19 @@ namespace PicarasMVCShop.Controllers
 
         private IEnumerable<Product> GetBestSeller()
         {
-            return _db.Products.OrderBy(x => x.NumberOfSales).Take(16).AsEnumerable().DistinctBy(x=>x.ProductCode);
+            return _db.Products.OrderBy(x => x.NumberOfSales)
+                .Take(16).AsEnumerable()
+                .DistinctBy(x=>x.ProductCode)
+                .Where(x => x.Quantity > 0);
         }
 
         private IEnumerable<Product> GetRecentAdded()
         {
-            return _db.Products.OrderBy(x => x.CreateDateTime).Take(16).AsEnumerable().DistinctBy(x => x.ProductCode); ;
+            return _db.Products.OrderBy(x => x.CreateDateTime)
+                .Take(16)
+                .AsEnumerable()
+                .DistinctBy(x => x.ProductCode)
+                .Where(x => x.Quantity > 0);
         }
 
         public ActionResult Footer()

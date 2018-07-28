@@ -25,13 +25,20 @@
                 <div class="form-group send-login">
                     <input type="button" value="Ingresar" class="btn btn-default btn-send" id="login" />
                     @*<a class="btn btn-default btn-back-contact" href="/Views/Login/RememberPassword.cshtml">Recordar Contraseña</a>*@
-                    @Html.ActionLink("Recordar Contraseña", "RememberPassword", null, new {@class = "btn btn-default btn-back-contact" })
+                    @Html.ActionLink("Recordar Contraseña", "RememberPassword", null, new { @class = "btn btn-default btn-back-contact" })
+
                     @*<input type="button" value="Recordar Contraseña" class="btn btn-default btn-back-contact" id="remember" />*@
                 </div>
+               
+                    <ul class="pager">
+                        <li class="previous"><a href="/Register"><span aria-hidden="true">&larr;</span> Nuevo Registro</a></li>
+                    </ul>
+                
+   
                 @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+        <p>
+            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+        </p>*@
             </div>
             <div class="col-md-4"></div>
         </section>

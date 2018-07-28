@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using MoreLinq;
 using Picaras.Model;
 using Picaras.Model.Entities;
 
@@ -25,7 +26,9 @@ namespace PicarasMVCShop.Controllers
 
         private IEnumerable<Product> GetSearchProducts(string productName)
         {
-            return _db.Products.Where(x => x.Name.Contains(productName));
+            return _db.Products.Where(x => x.Name.Contains(productName) && x.Quantity > 0)
+                .DistinctBy(x => x.ProductCode)
+                .OrderBy(x=> x.Price);
         }
     }
 }

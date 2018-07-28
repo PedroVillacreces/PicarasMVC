@@ -7,9 +7,10 @@
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <ul class="nav nav-tabs user-tabs">
-            <li role="presentation" class="active user1"><a href="#">Datos del Usuario</a></li>
-            <li role="presentation" class="user2"><a href="#">Pedidos Realizados</a></li>
-            <li role="presentation" class="user3"><a href="#">Dirección de Envío</a></li>
+            <li role="presentation" class="active user1"><a href="#UserData">Datos del Usuario</a></li>
+            <li role="presentation" class="user2"><a href="#Deliveries">Pedidos Realizados</a></li>
+            <li role="presentation" class="user3"><a href="#Address">Dirección de Envío</a></li>
+            <li role="presentation" class="user4"><a href="#DeleteData">Eliminación de tus datos</a></li>
         </ul>
     </div>
     <div class="col-md-2"></div>
@@ -61,7 +62,7 @@
             </div>
         </div>
         <div class="user-buttons">
-            <button class="btn btn-details">Modificar Datos</button>
+            <button class="btn btn-details" data-toggle="modal" data-target="#editOrder">Modificación Pedidos</button>
         </div>
     </div>
 
@@ -77,6 +78,19 @@
     </div>
     <div class="user-buttons">
         <button class="btn btn-details" data-toggle="modal" data-target="#myModal1">Modificar Datos</button>
+    </div>
+</div>
+
+<div class="body-content delete-user" style="display:none;">
+    <div class="user-data">
+        <p>Como cliente de Pícaras Closet nos gustaría que se quedara con nosotros!</p>
+        <p>- Si desea suspender su cuenta por un período de tiempo, mándanos un email a: <strong>picaras@picaras.es</strong>, con su nombre de usuario y desde el email con el que se registro y en el momento que quiere retomarla la activaremos encantados</p>
+        <p>- Como dueño de sus datos, tiene el derecho a eliminar esta cuenta si lo desea pulsando el botón <strong>Eliminar cuenta</strong> y sus datos desaparecerán de nuestra Base de Datos, excepto las facturas más recientes por temas fiscales</p>
+        <p>- La eliminación de su cuenta supone que no podremos reactivarla, ya que es de forma permanente</p>
+        <p>Saludos desde el equipo de Pícaras Closet</p>
+    </div>
+    <div class="user-buttons">
+        <button class="btn btn-details delete-account">Eliminar Cuenta</button>
     </div>
 </div>
 
@@ -222,15 +236,24 @@
     </div>
 </div>
 
-<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel">
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel"></div>
+
+<div class="modal fade" id="editOrder" tabindex="-1" role="dialog" aria-labelledby="editOrderLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="orderModalLabel">Pedido Número: </h4>
+                <h4 class="modal-title" id="orderModalLabel">Modificación o Cancelación de Pedidos</h4>
             </div>
-            <div class="modal-body" id="id-order">                 
+            <div class="modal-body" id="id-order">
+                <div class="">
+                    <p><strong>Para cancelación o modificación de Pedidos tendrá que:</strong></p>
+                    <p>- Mardar un email a: xxxx@@picaras.com, con el número de pedido en el asunto y el nombre de usuario</p>
+                    <p>- Llamar al número de teléfono: 926424242</p>
+                    <p>- Entrar en el formulario de contacto de la web, y especificar en el asunto número de pedido y el nombre de usuario</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+

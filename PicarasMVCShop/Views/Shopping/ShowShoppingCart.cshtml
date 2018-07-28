@@ -3,6 +3,7 @@
 @model IEnumerable<ProductCartViewModel>
 @{
     var customer = (Customer)Session["user"];
+    var isCustomer = customer != null ? customer.Name : string.Empty;
     if (Model != null && Model.Any())
     {
         var amount = Model.Select((x => x.Product.Price * x.ShoppingCart.Quantity)).Sum();
@@ -189,6 +190,11 @@
                                     <script type="text/javascript">
                                         $(".save-finish").on("click",
                                             function () {
+                                                if (!"@isCustomer") {
+                                                    alert("Para finalizar el pedido debe registrarse o iniciar sesión en la web");
+                                                    document.location.href = "/Login";
+                                                }
+                                                else {
                                                 var transports = $(".transports").val();
                                                 var payment = $("input[name=Payment]:checked").val();
                                                 var Order = {
@@ -207,7 +213,8 @@
                                                     error: function (xhr, textStatus, errorThrown) {
                                                         console.log(textStatus);
                                                     }
-                                                });
+                                                    });
+                                                }
                                             });
                                     </script>
                                     }
