@@ -87,8 +87,12 @@ namespace PicarasMVCShop.Controllers
                 _db.Entry(user).State = EntityState.Modified;
                 _db.SaveChanges();
             }
-
-            return View("~/Views/Login/UserMenu.cshtml", user);
+            var orders = _db.Orders.Where(x => x.CustomerId == user.CustomerId); 
+            return View("~/Views/Login/UserMenu.cshtml", new CustomersOdersViewModel
+            {
+             Customer   = user,
+             Orders = orders
+            });
         }
 
         [HttpPost]
@@ -106,7 +110,12 @@ namespace PicarasMVCShop.Controllers
                 _db.SaveChanges();
             }
 
-            return View("~/Views/Login/UserMenu.cshtml", user);
+            var orders = _db.Orders.Where(x => x.CustomerId == user.CustomerId);
+            return View("~/Views/Login/UserMenu.cshtml", new CustomersOdersViewModel
+            {
+                Customer = user,
+                Orders = orders
+            });
         }
 
         [HttpGet]
@@ -126,6 +135,16 @@ namespace PicarasMVCShop.Controllers
             }           
             return PartialView(returnOrderProducts);
 
+        }
+
+        [HttpPost]
+        public JsonResult DeleteAccount(int id)
+        {
+            var customer = _db.Customers.Find(id);
+            if (customer != null) _db.Customers.Remove(customer);
+            _db.SaveChanges();
+            Session.Remove("user");
+            return Json(_db.Customers.Find(id) == null ? "ok" : "ko");
         }
     }
 }

@@ -94,14 +94,35 @@
     </script>
     <script type="text/javascript">
         $(".show-order").on("click", function () {
-            var id = $(this).attr("id");
+            var id = $(this).attr("id"); 3
             var url = "@Url.Action("ShowDelivery", "Login", new { id = "-1"})";
             url = url.replace("-1", id);
 
             $.get(url, function (data) {
                 $('#orderModal').html(data);
-                $('#orderModal').modal('show');               
+                $('#orderModal').modal('show');
             });
+        });
+    </script>
+    <script type="text/javascript">
+        $(".delete-account").on("click", function () {
+            var confirmed = confirm("¿Está seguro que desea eliminar la cuenta permanentemente?");
+            if (confirmed) {
+                var id = $(this).attr("id");
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:52241/Login/DeleteAccount",
+                    content: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: { id: id },
+                    success: function (d) {
+                        document.location.href = "/";
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log(textStatus);
+                    }
+                });
+            }
         });
     </script>
 </body>

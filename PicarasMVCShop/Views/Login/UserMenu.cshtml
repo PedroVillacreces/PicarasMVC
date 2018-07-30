@@ -16,7 +16,7 @@
     <div class="col-md-2"></div>
 </div>
 
-<div class="body-content personal-data">
+<div class="body-content personal-data" style="margin-bottom:40px;">
     <div class="user-data">
         <h3>Datos personales:</h3>
         <p><span>Nombre: </span>@Model.Customer.Name</p>
@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<div class="body-content deliveries" style="display:none;">
+<div class="body-content deliveries" style="display:none; margin-bottom:40px;">
     <div class="user-data">
         <h3>Pedidos del Cliente</h3>
         <div class="table-responsive">
@@ -66,7 +66,7 @@
         </div>
     </div>
 
-<div class="body-content address" style="display:none;">
+<div class="body-content address" style="display:none;  margin-bottom:40px;">
     <div class="user-data">
         <h3>Dirección de Envío</h3>
         <p><span>Calle: </span>@Model.Customer.Address</p>
@@ -81,7 +81,7 @@
     </div>
 </div>
 
-<div class="body-content delete-user" style="display:none;">
+<div class="body-content delete-user" style="display:none; margin-bottom:40px;">
     <div class="user-data">
         <p>Como cliente de Pícaras Closet nos gustaría que se quedara con nosotros!</p>
         <p>- Si desea suspender su cuenta por un período de tiempo, mándanos un email a: <strong>picaras@picaras.es</strong>, con su nombre de usuario y desde el email con el que se registro y en el momento que quiere retomarla la activaremos encantados</p>
@@ -90,7 +90,7 @@
         <p>Saludos desde el equipo de Pícaras Closet</p>
     </div>
     <div class="user-buttons">
-        <button class="btn btn-details delete-account">Eliminar Cuenta</button>
+        <button class="btn btn-details delete-account" id="@Model.Customer.CustomerId">Eliminar Cuenta</button>
     </div>
 </div>
 

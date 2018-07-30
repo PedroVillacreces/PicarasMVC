@@ -38,7 +38,7 @@ namespace PicarasMVCShop.Controllers
 
         private IEnumerable<string> GetSizes(int productCode)
         {
-            var product = _db.Products.Where(x => x.ProductCode == productCode);
+            var product = _db.Products.Where(x => x.ProductCode == productCode && x.Quantity > 0);
             return product.Select(x => x.Size);
 
         }
@@ -56,7 +56,7 @@ namespace PicarasMVCShop.Controllers
 
         public JsonResult GetQuantityBySize(int pc, string size)
         {
-            var products = _db.Products.FirstOrDefault(x => x.ProductCode == pc && x.Size == size);
+            var products = _db.Products.FirstOrDefault(x => x.ProductCode == pc && x.Size == size && x.Quantity > 0);
             return Json(new 
             {
                 Id = products.ProductId,
