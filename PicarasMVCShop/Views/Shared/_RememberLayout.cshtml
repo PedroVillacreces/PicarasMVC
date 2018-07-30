@@ -13,11 +13,11 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="social-icons">
-            <a href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
-            <a href="www.facebook.es"><i class="fab fa-twitter-square"></i></a>
-            <a href="www.facebook.es"><i class="fab fa-instagram"></i></a>
-            <a href="www.facebook.es"><i class="fab fa-whatsapp-square"></i></a>
-            <a href="www.facebook.es"><i class="fab fa-linkedin"></i></a>
+            <a target="_blank" href="www.facebook.es"><i class="fab fa-facebook-square"></i></a>
+            <a target="_blank" href="www.facebook.es"><i class="fab fa-twitter-square"></i></a>
+            <a target="_blank" href="www.facebook.es"><i class="fab fa-instagram"></i></a>
+            <a target="_blank" href="www.facebook.es"><i class="fab fa-whatsapp-square"></i></a>
+            <a target="_blank" href="www.facebook.es"><i class="fab fa-linkedin"></i></a>
         </div>
         <div class="search-box">
             @Html.Action("GetShoppingCounter", "Shopping")
@@ -36,9 +36,7 @@
             <a href="/"><img src="~/Content/Images/Logo/picaras.png" alt="logo" class="logo-img" /></a>
         </div>
         @Html.Action("MenuHeader", "Home")
-
     </header>
-
     <div class="container body-content">
         @RenderBody()
     </div>

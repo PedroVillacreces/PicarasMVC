@@ -1,14 +1,23 @@
 ﻿@model Picaras.Model.Entities.Customer
-@{
-     Layout = "~/Views/Shared/_RememberLayout.cshtml";
-}
 
+@{   
+    Layout = "~/Views/Shared/_RememberLayout.cshtml";
+}
 @using (Html.BeginForm("ActivateAccount", "Register"))
 {
-    <div class="form-group">
-        <label>Introduce el código de verificación para activar tu cuenta</label>
-        <input type="hidden" name="customerId" value="@Model.CustomerId" />
-        <input class="" type="text" name="code" required />
-        <input type="submit" value="Envíar código" />
+    <div class="container">
+        <h2 class="text-center horizontal-line">Activar Cuenta</h2>
+    </div>
+    <div class="container">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label><strong>Introduce el código de verificación para activar tu cuenta</strong></label>
+                <input type="hidden" name="customerId" value="@Model.CustomerId" />
+                <input class="form-control" type="text" name="code" required />
+                <input class="btn btn-default" type="submit" value="Envíar código" />
+            </div>
+        </div>
+        <div class="col-md-4"></div>
     </div>
 }

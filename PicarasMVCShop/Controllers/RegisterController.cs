@@ -48,7 +48,7 @@ namespace PicarasMVCShop.Controllers
             user.Active = true;
             _db.Entry(user).Property("Active").IsModified = true;
             _db.SaveChanges();
-            return View(("~/Views/Login/Index.cshtml"));
+            return View("~/Views/Login/Index.cshtml");
 
         }
 
