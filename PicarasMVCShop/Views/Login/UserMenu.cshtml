@@ -83,6 +83,7 @@
 
 <div class="body-content delete-user" style="display:none; margin-bottom:40px;">
     <div class="user-data">
+        <h3>Eliminación de mis datos</h3>
         <p>Como cliente de Pícaras Closet nos gustaría que se quedara con nosotros!</p>
         <p>- Si desea suspender su cuenta por un período de tiempo, mándanos un email a: <strong>picaras@picaras.es</strong>, con su nombre de usuario y desde el email con el que se registro y en el momento que quiere retomarla la activaremos encantados</p>
         <p>- Como dueño de sus datos, tiene el derecho a eliminar esta cuenta si lo desea pulsando el botón <strong>Eliminar cuenta</strong> y sus datos desaparecerán de nuestra Base de Datos, excepto las facturas más recientes por temas fiscales</p>
@@ -105,7 +106,7 @@
                 @using (Html.BeginForm("EditPersonalData", "Login", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-
+                    @Html.ValidationSummary(true)
                     <div class="form-horizontal margin-container">
                         <h4>Editar Cliente</h4>
                         <hr />

@@ -46,6 +46,7 @@ namespace PicarasMVCShop.Controllers
                 _db.SaveChanges();
                 var product = _db.Products.Find(item.Product.ProductId);
                 product.Quantity = product.Quantity - item.ShoppingCart.Quantity;
+                product.NumberOfSales = product.NumberOfSales + item.ShoppingCart.Quantity;
                 _db.Entry(product).State = EntityState.Modified;
                 _db.SaveChanges();                
             }

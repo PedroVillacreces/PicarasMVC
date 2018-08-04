@@ -48,6 +48,7 @@ namespace Picaras.Model.Entities
         [Phone]
         [Display(Name = "Teléfono")]
         public string Phone { get; set; }
+        [Remote("DoesEmailExist", "Register", HttpMethod = "POST", ErrorMessage = "Este email ya existe. Por favor elige un usuario nuevo.")]
         [Required(ErrorMessage = "Campo Correo Electrónico Obligatorio")]
         [EmailAddress]
         [Display(Name = "Correo")]

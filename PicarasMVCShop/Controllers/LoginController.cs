@@ -146,5 +146,7 @@ namespace PicarasMVCShop.Controllers
             Session.Remove("user");
             return Json(_db.Customers.Find(id) == null ? "ok" : "ko");
         }
+
+
     }
 }

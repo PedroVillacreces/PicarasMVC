@@ -22,5 +22,8 @@ namespace Picaras.Model.Entities
         [Required]
         [Display(Name = "Asunto")]
         public string Subject { get; set; }
+        [Required(ErrorMessage = "Necesitamos que por favor, lea y acepte los términos y condiciones")]
+        [Display(Name = "Terminos y Condiciones")]        
+        public bool IsTermsAccepted { get; set; }
     }
 }

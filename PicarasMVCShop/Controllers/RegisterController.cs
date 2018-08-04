@@ -30,8 +30,7 @@ namespace PicarasMVCShop.Controllers
         public async Task<ActionResult> Register([Bind(Include = "CustomerId,Name,LastName,Address,Country,PostCode,City,Region,Birthday,Phone,Email,UserName,Password,ConfirmPassword")] Customer customer)
         {
             customer.CodeActive = GeneratedCodeAttribute();
-            customer.Active = false;
-           
+            customer.Active = false;           
             var messege = "El código de activación de la cuenta es el: " + customer.CodeActive;
             SenderEmails.Sender("Código Activación de Pícaras", messege,
                 customer.Email, "pedrovillacreces@gmail.com");
@@ -72,6 +71,13 @@ namespace PicarasMVCShop.Controllers
         public JsonResult DoesUserNameExist(string userName)
         {
             var user = _db.Customers.FirstOrDefault(x => x.UserName == userName);
+            return Json(user == null);
+        }
+
+        [HttpPost]
+        public JsonResult DoesEmailExist(string email)
+        {
+            var user = _db.Customers.FirstOrDefault(x => x.Email == email);
             return Json(user == null);
         }
     }
