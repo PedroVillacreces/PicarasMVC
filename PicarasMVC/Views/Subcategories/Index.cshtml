@@ -4,8 +4,9 @@
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="margin-container">
+    <h2 style="text-align: center;">Subcategorías</h2>
     <p>
-        @Html.ActionLink("Crear nueva Subcategoría", "Create", null, new {@class="btn btn-about"})
+        @Html.ActionLink("Crear nueva Subcategoría", "Create", null, new { @class = "btn btn-about" })
     </p>
     <table class="table">
         <tr>
@@ -22,25 +23,26 @@ Layout = "~/Views/Shared/_Layout.cshtml";
                 Botones
             </th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.SubcategoryId }, new { @class = "btn btn-warning" })
-                @Html.ActionLink("Detalles", "Details", new { id=item.SubcategoryId }, new { @class = "btn btn-info" })
-                @Html.ActionLink("Borrar", "Delete", new { id=item.SubcategoryId }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.SubcategoryId }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Detalles", "Details", new { id = item.SubcategoryId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.SubcategoryId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
     </table>
 </div>

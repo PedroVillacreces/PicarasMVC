@@ -2,51 +2,83 @@
 <div class="container">
     <h2 class="text-center horizontal-line">Formulario de Contacto</h2>
 </div>
-@using (Html.BeginForm("SendData", "Contact", FormMethod.Post))
+@using (Html.BeginForm("SendData", "Contact", FormMethod.Post, new{ onsubmit = "return checkForm(this);" }))
 {
     @Html.ValidationSummary(true)
-<div class="container" style="margin-bottom:40px;">
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name)
-        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control input-lg" } })
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Surname)
-        @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control input-lg" } })
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email)
-        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control input-lg" } })
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-    </div>
+    <div class="container" style="margin-bottom:40px;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control input-lg" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Surname)
+            @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control input-lg" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control input-lg" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Phone)
-        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control input-lg" } })
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone)
+            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control input-lg" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Subject)
-        @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control input-lg" } })
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subject)
+            @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control input-lg" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message)
+            @Html.TextAreaFor(model => model.Message, new { @class = "form-control input-lg boxsizingBorder" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(model => model.IsTermsAccepted, new { required = "required"})
+                    <label>Términos y condiciones de <span data-toggle="modal" 
+                                                           data-target="#modalPrivacity"
+                                                           style="text-decoration: underline; color: blue;"
+                                                           >privacidad
+                                                    </span>
+                    </label> 
+                </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Enviar" class="btn btn-primary btn-send" />
+            @Html.ActionLink("Volver Página de Inicio", "../", null, new { @class = "btn btn-success btn-back-contact" })
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Message)
-        @Html.TextAreaFor(model => model.Message, new { @class = "form-control input-lg boxsizingBorder" })
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    <div class="modal fade" id="modalPrivacity" tabindex="-1" role="dialog" aria-labelledby="modalPrivacityLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="orderModalLabel">Terminos y privacidad</h4>
+                </div>
+                <div class="" id="">
+                    
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.IsTermsAccepted)
-        @Html.CheckBoxFor(model => model.IsTermsAccepted, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Enviar" class="btn btn-primary btn-send" />
-        @Html.ActionLink("Volver Página de Inicio", "../", null, new { @class = "btn btn-success btn-back-contact" })
-    </div>
-</div>
+    <script type="text/javascript">
+
+        function checkForm(form)
+        {
+            if (!form.IsTermsAccepted.checked) {
+                alert("Por favor, lea y acepte los términos y condiciones de privacidad");
+                form.terms.focus();
+                return false;
+            }
+            return true;
+        }
+
+    </script>
 }

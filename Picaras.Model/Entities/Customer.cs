@@ -30,7 +30,7 @@ namespace Picaras.Model.Entities
         public string Country { get; set; }
         [Required(ErrorMessage = "Campo CP Obligatorio")]
         [MaxLength(10)]
-        [Display(Name = "CodPostal")]
+        [Display(Name = "Codigo Postal")]
         public string PostCode { get; set; }
         [Required(ErrorMessage = "Campo Población Obligatorio")]
         [MaxLength(20)]
@@ -41,7 +41,7 @@ namespace Picaras.Model.Entities
         [Display(Name = "Provincia")]
         public string Region { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        [Display(Name = "FNacimiento")]
+        [Display(Name = "Fecha de Nacimiento")]
         [Required(ErrorMessage = "Campo Fecha de Nacimiento Obligatorio")]
         public DateTime Birthday { get; set; }
         [Required(ErrorMessage = "Campo Teléfono Obligatorio")]
@@ -65,6 +65,9 @@ namespace Picaras.Model.Entities
         public string ConfirmPassword { get; set; }
         public bool Active { get; set; }
         public string CodeActive { get; set; }
+        [Display(Name = "Términos y condiciones de privacidad")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Por favor, lea y acepte los términos y condiciones de privacidad")]
+        public bool TermsPrivacity { get; set; }
         public IEnumerable<Order> Orders { get; set; }
     }
 }

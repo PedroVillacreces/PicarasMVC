@@ -1,24 +1,33 @@
 ﻿@using Picaras.Model.Entities
 @model IEnumerable<Product>
-
-<div class="row" style="margin-bottom:40px;">
+<div class="row" style="margin-bottom: 40px;">
     <div class="container">
         <h2 class="text-center horizontal-line">Resultados de la búsqueda</h2>
-    @foreach (var item in Model)
-    {
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="@item.Picture" alt="@item.Name">
-                <div class="caption">
-                    <div class="name-price">
-                        <h3>@item.Name</h3>
-                        <p>@item.Price€</p>
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="@item.Picture" alt="@item.Name">
+                        <div class="caption">
+                            <div class="name-price">
+                                <h3>@item.Name</h3>
+                                <p>@item.Price€</p>
+                            </div>
+                            <p>@item.Description</p>
+                            @Html.ActionLink("Detalles", "Index", "Item", new { id = @item.ProductId }, new { @class = "btn btn-info btn-details" })
+                        </div>
                     </div>
-                    <p>@item.Description</p>
-                    @Html.ActionLink("Detalles", "Index", "Item", new { id = @item.ProductId }, new { @class = "btn btn-info btn-details" })
                 </div>
+            }
+
+        }
+        else
+        {
+            <div>
+                <h2 class="text-center">No se han encontrado ningún producto según los criterios de búsqueda</h2>
             </div>
-        </div>
-    }
+        }
     </div>
 </div>

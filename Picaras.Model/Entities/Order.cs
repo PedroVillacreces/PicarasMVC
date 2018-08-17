@@ -18,7 +18,9 @@ namespace Picaras.Model.Entities
         public int CustomerId { get; set; }
         [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Fecha Pedido")]
         public DateTime OrderDay { get; set; }
+        [Display(Name = "Precio Agencia")]
         public decimal AgentPrice { get; set; }
         [Required]
         public int AgentTransportId { get; set; }
@@ -26,10 +28,13 @@ namespace Picaras.Model.Entities
         public virtual AgentTransport AgentTransport { get; set; }
         public ICollection<OrderProduct> Products { get; set; }
         [Required]
+        [Display(Name = "Total Pedido")]
         public decimal Amount { get; set; }
         [Required]
+        [Display(Name = "Tipo Pago")]
         public string Payments { get; set; }
-        [Required]        
+        [Required]
+        [Display(Name = "Estado")]
         public string Status { get; set; } = "Enviado";
     }
     [DataContract(IsReference = true)]

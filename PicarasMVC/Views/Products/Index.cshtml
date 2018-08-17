@@ -5,8 +5,9 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="margin-container">
+    <h2 style="text-align: center;">Productos</h2>
     <p>
-        @Html.ActionLink("Crear nuevo producto", "Create", null, new {@class="btn btn-about"})
+        @Html.ActionLink("Crear nuevo producto", "Create", null, new {@class = "btn btn-about"})
     </p>
     <table class="table">
         <tr>
@@ -30,9 +31,6 @@ Layout = "~/Views/Shared/_Layout.cshtml";
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreateDateTime)
@@ -77,9 +75,6 @@ Layout = "~/Views/Shared/_Layout.cshtml";
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Picture)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.CreateDateTime)
                 </td>
                 <td>
@@ -95,9 +90,9 @@ Layout = "~/Views/Shared/_Layout.cshtml";
                     @Html.DisplayFor(modelItem => item.Size)
                 </td>
                 <td style="width: 100%">
-                    @Html.ActionLink(" ", "Edit", new { id = item.ProductId }, new { @class = "btn btn-warning btn-product fas fa-edit" })
-                    @Html.ActionLink(" ", "Details", new { id = item.ProductId }, new { @class = "btn btn-info btn-product fas fa-info" })
-                    @Html.ActionLink(" ", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger btn-product fas fa-trash-alt" })
+                    @Html.ActionLink(" ", "Edit", new {id = item.ProductId}, new {@class = "btn btn-warning btn-product fas fa-edit"})
+                    @Html.ActionLink(" ", "Details", new {id = item.ProductId}, new {@class = "btn btn-info btn-product fas fa-info"})
+                    @Html.ActionLink(" ", "Delete", new {id = item.ProductId}, new {@class = "btn btn-danger btn-product fas fa-trash-alt"})
                 </td>
             </tr>
         }

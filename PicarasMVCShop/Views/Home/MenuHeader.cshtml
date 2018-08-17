@@ -1,50 +1,46 @@
 ﻿@using Picaras.Model.Entities
 @model IEnumerable<Category>
-<div class="navbar navbar-default navbar-menu">
-
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-    </div>
-    <div class="second-nav collapse">
-        <div class="item-nav">@Html.ActionLink("INICIO", "Index", "Home")</div>
-        <div class="item-nav">@Html.ActionLink("REGISTRARSE ", "Index", "Register")</div>
-        <div class="item-nav">@Html.ActionLink("CONTACTO", "Index", "Contact")</div>
-        <div class="item-nav">@Html.ActionLink("OUTLET", "Index", "Outlet")</div>
-        @foreach (var item in Model)
-        {
-            <div class="item-nav">
-                <div class="shopping-cart-wrapper">
-                    <div class="dropdown is-hoverable">
-                        <div class="dropdown-trigger">
-                            @Html.ActionLink(item.Name.ToUpper(), "Index", "Categories", routeValues: new {id = item.CategoryId }, htmlAttributes: null )
-                        </div>
-                        @if (item.Subcategories.Any())
-                        {
-                            <div class="dropdown-menu" id="dropdown-menu4" role="menu" style="top: 86%;">
-                                <div class="dropdown-content">
-                                    <div class="dropdown-item">
-                                        @foreach (var subcategory in item.Subcategories)
-                                        {
-                                            @Html.ActionLink(subcategory.Name.ToUpper(), "ShowBySubcategories", "Categories", routeValues: new { id = subcategory.SubcategoryId }, htmlAttributes: null)
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-
-            @*foreach (var subcategory in item.Subcategories)
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+            </button>
+        </div>
+        <div class="collapse navbar-collapse second-nav" id="navbarMenu">
+            <ul class="nav navbar-nav">
+                <li >@Html.ActionLink("INICIO", "Index", "Home")</li>
+                <li >@Html.ActionLink("REGISTRARSE ", "Index", "Register")</li>
+                <li>@Html.ActionLink("CONTACTO", "Index", "Contact")</li>
+                <li>@Html.ActionLink("OUTLET", "Index", "Outlet")</li>
+                @*@foreach (var item in Model)
                 {
-                    @Html.ActionLink(subcategory.Name, "Index", "Home")
+                    <li class="item-nav">
+                        <div class="shopping-cart-wrapper">
+                            <div class="dropdown is-hoverable">
+                                <div class="dropdown-trigger">
+                                    @Html.ActionLink(item.Name.ToUpper(), "Index", "Categories", routeValues: new { id = item.CategoryId }, htmlAttributes: null)
+                                </div>
+                                @if (item.Subcategories.Any())
+                                {
+                                    <div class="dropdown-menu" id="dropdown-menu4" role="menu" style="top: 86%;">
+                                        <div class="dropdown-content">
+                                            <div class="dropdown-item">
+                                                @foreach (var subcategory in item.Subcategories)
+                                                {
+                                                    @Html.ActionLink(subcategory.Name.ToUpper(), "ShowBySubcategories", "Categories", routeValues: new { id = subcategory.SubcategoryId }, htmlAttributes: null)
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </li>
                 }*@
-
-        }
+            </ul>
+        </div>
     </div>
-
-</div>
+</nav>

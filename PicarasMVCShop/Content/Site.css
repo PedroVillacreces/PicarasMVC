@@ -167,6 +167,7 @@ h1, h2, h3, h4, input, button, a, li, p, label {
     background-color: black !important;
     color: white !important;
     margin-left: 15px;
+    margin-top: 15px;
 }
 
 .product-cart {
@@ -175,8 +176,8 @@ h1, h2, h3, h4, input, button, a, li, p, label {
 
 
 .btn-details {
-    background-color: slategray !important;
-    border-color: slategray !important;
+    background-color: #cc9900 !important;
+    border-color: #cc9900 !important;
     color: white !important;
 }
 
@@ -185,8 +186,8 @@ h1, h2, h3, h4, input, button, a, li, p, label {
 }
 
 .thumbnail img {
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 350px;
+    max-height: 350px;
     width: 250px;
 }
 
@@ -333,8 +334,8 @@ h1, h2, h3, h4, input, button, a, li, p, label {
     /*position: absolute !important;
     bottom: 0;
     width: 100%;
-    height: 60px; /* Height of the footer */
-    background: #6cf;*/
+    height: 60px; /* Height of the footer 
+    background: #6cf*/
 }
 
 .name-price {
@@ -346,6 +347,10 @@ h1, h2, h3, h4, input, button, a, li, p, label {
         margin-top: 25px;
         margin-bottom: 10px;
     }
+
+#Sizes, #Quantity {
+    margin-left: 10px;
+}
 /*.dropdown-menu {
     float: left;
     overflow: hidden;

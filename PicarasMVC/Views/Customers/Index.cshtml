@@ -3,7 +3,8 @@
 @{
 Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="margin-container">
+<div class="margin-container">
+    <h2 style="text-align: center;">Clientes</h2>
     <p>
         @Html.ActionLink("Crear nuevo cliente", "Create", null, new { @class = "btn btn-about" })
     </p>
@@ -41,47 +42,48 @@ Layout = "~/Views/Shared/_Layout.cshtml";
             </th>
             <th>Botones acciones navegación</th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Region)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id=item.CustomerId }, new { @class = "btn btn-warning btn-product fas fa-edit" })
-                @Html.ActionLink(" ", "Details", new { id=item.CustomerId }, new { @class = "btn btn-info btn-product fas fa-info" })
-                @Html.ActionLink(" ", "Delete", new { id=item.CustomerId }, new { @class = "btn btn-danger btn-product fas fa-trash-alt" })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.CustomerId }, new { @class = "btn btn-warning btn-product fas fa-edit" })
+                    @Html.ActionLink(" ", "Details", new { id = item.CustomerId }, new { @class = "btn btn-info btn-product fas fa-info" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.CustomerId }, new { @class = "btn btn-danger btn-product fas fa-trash-alt" })
+                </td>
+            </tr>
+        }
+
     </table>
-    </div>
+</div>
 

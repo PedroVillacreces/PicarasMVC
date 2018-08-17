@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Picaras.Model;
@@ -43,27 +42,33 @@ namespace PicarasMVCShop.Controllers
         public JsonResult AddtoCart(ShoppingCart shopping)
         {
             var agents = _db.AgentTransports.ToList();
+            var getProduct = _db.Products.Find(shopping.ProductCode);
             if (Session["cart"] == null)
             {
-                var cart = new List<ProductCartViewModel>();
-                var getProduct = _db.Products.Find(shopping.ProductCode);
-               
-                cart.Add(new ProductCartViewModel
+                var cart = new List<ProductCartViewModel>
                 {
-                    Product = getProduct,
-                    ShoppingCart = shopping,
-                    AgentTransport = agents
-                });
+                    new ProductCartViewModel
+                    {
+                        Product = getProduct,
+                        ShoppingCart = shopping,
+                        AgentTransport = agents
+                    }
+                };
+
+
 
                 Session["cart"] = cart;
             }
             else
             {
-                var cart = (List<ProductCartViewModel>) Session["cart"];
+                var cart = (List<ProductCartViewModel>)Session["cart"];
                 var index = IsExist(shopping.ProductCode);
                 if (index != -1)
                 {
-                    cart[index].ShoppingCart.Quantity += shopping.Quantity;
+                    if (getProduct != null && getProduct.Quantity != cart[index].ShoppingCart.Quantity)
+                    {
+                        cart[index].ShoppingCart.Quantity += shopping.Quantity;
+                    }
                 }
                 else
                 {

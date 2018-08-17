@@ -1,13 +1,12 @@
 ﻿using System.Data.Entity;
-using System.Net;
 using System.Threading.Tasks;
+using System.Net;
 using System.Web.Mvc;
 using Picaras.Model;
 using Picaras.Model.Entities;
 
 namespace PicarasMVC.Controllers
 {
-    [Authorize]
     public class OrdersController : Controller
     {
         private PicarasModel db = new PicarasModel();
@@ -44,10 +43,10 @@ namespace PicarasMVC.Controllers
 
         // POST: Orders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "OrderId,CustomerId,OrderDay,AgentTransportId,ProductId")] Order order)
+        public async Task<ActionResult> Create([Bind(Include = "OrderId,CustomerId,OrderDay,AgentPrice,AgentTransportId,Amount,Payments,Status")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -56,7 +55,7 @@ namespace PicarasMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AgentTransportId = new SelectList(db.AgentTransports, "AgentTransportId", "AgentName", order);
+            ViewBag.AgentTransportId = new SelectList(db.AgentTransports, "AgentTransportId", "AgentName", order.AgentTransportId);
             ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "Name", order.CustomerId);
             return View(order);
         }
@@ -80,10 +79,10 @@ namespace PicarasMVC.Controllers
 
         // POST: Orders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "OrderId,CustomerId,OrderDay,AgentTransportId,ProductId")] Order order)
+        public async Task<ActionResult> Edit([Bind(Include = "OrderId,CustomerId,OrderDay,AgentPrice,AgentTransportId,Amount,Payments,Status")] Order order)
         {
             if (ModelState.IsValid)
             {

@@ -27,7 +27,7 @@ namespace PicarasMVCShop.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register([Bind(Include = "CustomerId,Name,LastName,Address,Country,PostCode,City,Region,Birthday,Phone,Email,UserName,Password,ConfirmPassword")] Customer customer)
+        public async Task<ActionResult> Register([Bind(Include = "CustomerId,Name,LastName,Address,Country,PostCode,City,Region,Birthday,Phone,Email,UserName,Password,ConfirmPassword, TermsPrivacity")] Customer customer)
         {
             customer.CodeActive = GeneratedCodeAttribute();
             customer.Active = false;           
@@ -80,5 +80,6 @@ namespace PicarasMVCShop.Controllers
             var user = _db.Customers.FirstOrDefault(x => x.Email == email);
             return Json(user == null);
         }
-    }
+
+   }
 }

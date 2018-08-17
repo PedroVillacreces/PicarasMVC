@@ -8,7 +8,7 @@
             case "bankTransfer":
                 $("#bankPayment").modal("show");
                 break;
-        default:
+            default:
+                alert("Para continuar debe de eligir un Tipo de Pago, Gracias!");
         }
-
     });

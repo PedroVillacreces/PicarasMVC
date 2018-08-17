@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Picaras.Model;
 using Picaras.Model.Entities;
@@ -45,9 +44,13 @@ namespace PicarasMVCShop.Controllers
                         });
                 _db.SaveChanges();
                 var product = _db.Products.Find(item.Product.ProductId);
-                product.Quantity = product.Quantity - item.ShoppingCart.Quantity;
-                product.NumberOfSales = product.NumberOfSales + item.ShoppingCart.Quantity;
-                _db.Entry(product).State = EntityState.Modified;
+                if (product != null)
+                {
+                    product.Quantity = product.Quantity - item.ShoppingCart.Quantity;
+                    product.NumberOfSales = product.NumberOfSales + item.ShoppingCart.Quantity;
+                    _db.Entry(product).State = EntityState.Modified;
+                }
+
                 _db.SaveChanges();                
             }
             Session.Remove("cart");
