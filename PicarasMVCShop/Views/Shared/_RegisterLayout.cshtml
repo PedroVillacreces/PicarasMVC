@@ -42,7 +42,7 @@
     <footer class="navbar navbar-inverse footer">
         @Html.Action("Footer", "Home")
     </footer>
-    
+
     <script src="~/scripts/jquery.validate.min.js"></script>
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/scripts/respond.min.js"></script>
@@ -53,6 +53,22 @@
             function () {
                 $("#dropdown-menu4", this).css("display", "none");
             });
+    </script>
+
+    <script type="text/javascript">
+        (function ($) {
+            $.validator.unobtrusive.adapters.addBool("checkboxrequired", "required");
+        }(jQuery));
+    </script>
+    <script type="text/javascript">
+        $(".navbar-toggle").on("click", function () {
+            if (!$('#myNavbar').is(':visible')) {
+                $("#myNavbar").css("display", "flex");
+            }
+            else {
+                $("#myNavbar").css("display", "none");
+            }
+        });
     </script>
 </body>
 </html>

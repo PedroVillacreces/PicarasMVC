@@ -7,6 +7,10 @@
         {
             foreach (var item in Model)
             {
+                if (item.Picture == null)
+                {
+                    item.Picture = $"/Content/Images/noImagen.jpg";
+                }
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
                         <img src="@item.Picture" alt="@item.Name">

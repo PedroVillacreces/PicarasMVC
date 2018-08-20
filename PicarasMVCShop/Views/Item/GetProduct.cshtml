@@ -2,6 +2,10 @@
 @model Picaras.Model.ViewModels.ProductSize
 @{
     var descuento = Model.Product.OldPrice - Model.Product.Price;
+    if (Model.Product.Picture == null)
+    {
+        Model.Product.Picture = $"/Content/Images/noImagen.jpg";
+    }
 }
 <div class="container" >
     <h2 class="text-center horizontal-line">Producto: @Model.Product.Name</h2>

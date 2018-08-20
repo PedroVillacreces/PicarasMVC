@@ -4,6 +4,10 @@
     <h4 class="text-center horizontal-line">ARTÍCULOS MÁS VENDIDOS</h4>
     @foreach (var item in Model)
     {
+        if (item.Picture == null)
+        {
+            item.Picture = $"/Content/Images/noImagen.jpg";
+        }
         <div class="col-sm-6 col-md-4" style="margin-bottom: 20px;">
             <div class="thumbnail">
                 <img src="@item.Picture" alt="@item.Name">

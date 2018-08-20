@@ -1,45 +1,87 @@
 ﻿@using Picaras.Model.Entities
 @model IEnumerable<Category>
+@*@<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMenu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse second-nav" id="navbarMenu">
+                <ul class="nav navbar-nav">
+                    <li >@Html.ActionLink("INICIO", "Index", "Home")</li>
+                    <li >@Html.ActionLink("REGISTRARSE ", "Index", "Register")</li>
+                    <li>@Html.ActionLink("CONTACTO", "Index", "Contact")</li>
+                    <li>@Html.ActionLink("OUTLET", "Index", "Outlet")</li>
+                    @foreach (var item in Model)
+                    {
+                        <li class="item-nav">
+                            <div class="shopping-cart-wrapper">
+                                <div class="dropdown is-hoverable">
+                                    <div class="dropdown-trigger">
+                                        @Html.ActionLink(item.Name.ToUpper(), "Index", "Categories", routeValues: new { id = item.CategoryId }, htmlAttributes: null)
+                                    </div>
+                                    @if (item.Subcategories.Any())
+                                    {
+                                        <div class="dropdown-menu" id="dropdown-menu4" role="menu" style="top: 86%;">
+                                            <div class="dropdown-content">
+                                                <div class="dropdown-item">
+                                                    @foreach (var subcategory in item.Subcategories)
+                                                    {
+                                                        @Html.ActionLink(subcategory.Name.ToUpper(), "ShowBySubcategories", "Categories", routeValues: new { id = subcategory.SubcategoryId }, htmlAttributes: null)
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>*@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMenu">
+            <button type="button" class="navbar-toggle">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                        
+                <span class="icon-bar"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse second-nav" id="navbarMenu">
+        <div class="collapse navbar-collapse" id="myNavbar" style="text-align:center">
             <ul class="nav navbar-nav">
-                <li >@Html.ActionLink("INICIO", "Index", "Home")</li>
-                <li >@Html.ActionLink("REGISTRARSE ", "Index", "Register")</li>
+                <li>@Html.ActionLink("INICIO", "Index", "Home")</li>
+                <li>@Html.ActionLink("REGISTRARSE ", "Index", "Register")</li>
                 <li>@Html.ActionLink("CONTACTO", "Index", "Contact")</li>
                 <li>@Html.ActionLink("OUTLET", "Index", "Outlet")</li>
-                @*@foreach (var item in Model)
+                @foreach (var item in Model)
                 {
-                    <li class="item-nav">
-                        <div class="shopping-cart-wrapper">
-                            <div class="dropdown is-hoverable">
-                                <div class="dropdown-trigger">
-                                    @Html.ActionLink(item.Name.ToUpper(), "Index", "Categories", routeValues: new { id = item.CategoryId }, htmlAttributes: null)
-                                </div>
-                                @if (item.Subcategories.Any())
-                                {
-                                    <div class="dropdown-menu" id="dropdown-menu4" role="menu" style="top: 86%;">
-                                        <div class="dropdown-content">
-                                            <div class="dropdown-item">
-                                                @foreach (var subcategory in item.Subcategories)
-                                                {
-                                                    @Html.ActionLink(subcategory.Name.ToUpper(), "ShowBySubcategories", "Categories", routeValues: new { id = subcategory.SubcategoryId }, htmlAttributes: null)
-                                                }
-                                            </div>
+                    <li>
+                        <div class="dropdown is-hoverable">
+                            <div class="dropdown-trigger">
+                                @Html.ActionLink(item.Name.ToUpper(), "Index", "Categories", routeValues: new { id = item.CategoryId }, htmlAttributes: null)
+                            </div>
+                            @if (item.Subcategories.Any())
+                            {
+                                <div class="dropdown-menu" id="dropdown-menu4" role="menu" style="top: 86%;">
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-item">
+                                            @foreach (var subcategory in item.Subcategories)
+                                            {
+                                                @Html.ActionLink(subcategory.Name.ToUpper(), "ShowBySubcategories", "Categories", routeValues: new { id = subcategory.SubcategoryId }, htmlAttributes: null)
+                                            }
                                         </div>
                                     </div>
-                                }
-                            </div>
+                                </div>
+                            }
                         </div>
                     </li>
-                }*@
+                }
             </ul>
         </div>
     </div>

@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace Picaras.Model.Entities
 {
+    using Picaras.Model.CustomDataNotations;
     using System;
     using System.ComponentModel.DataAnnotations;
 
@@ -66,7 +67,7 @@ namespace Picaras.Model.Entities
         public bool Active { get; set; }
         public string CodeActive { get; set; }
         [Display(Name = "Términos y condiciones de privacidad")]
-        [Range(typeof(bool), "true", "true", ErrorMessage = "Por favor, lea y acepte los términos y condiciones de privacidad")]
+        [CheckBoxRequired(ErrorMessage = "Por favor, lea y acepte los términos y condiciones de privacidad")]   
         public bool TermsPrivacity { get; set; }
         public IEnumerable<Order> Orders { get; set; }
     }

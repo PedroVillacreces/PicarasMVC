@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -51,6 +50,16 @@
             function () {
                 $("#dropdown-menu4", this).css("display", "none");
             });
+    </script>
+    <script type="text/javascript">
+        $(".navbar-toggle").on("click", function () {
+            if (!$('#myNavbar').is(':visible')) {
+                $("#myNavbar").css("display", "flex");
+            }
+            else {
+                $("#myNavbar").css("display", "none");
+            }
+        });
     </script>
 </body>
 </html>

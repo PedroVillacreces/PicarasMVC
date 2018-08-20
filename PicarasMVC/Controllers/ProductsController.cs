@@ -54,23 +54,18 @@ namespace PicarasMVC.Controllers
             if (ModelState.IsValid)
             {
                 var fileContent = Request.Files["Picture"];
-                if (fileContent != null)
+                if (!string.IsNullOrEmpty(fileContent.FileName))
                 {
                     var stream = fileContent.InputStream;
                     var fileName = Path.GetFileName(fileContent.FileName);
-                    if (fileName != null)
+                    var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                    using (var fileStream = System.IO.File.Create(path))
                     {
-                        var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
-                        using (var fileStream = System.IO.File.Create(path))
-                        {
                             await stream.CopyToAsync(fileStream).ConfigureAwait(false);
-                        }
                     }
-
-                    product.CreateDateTime = DateTime.Now;
-                    product.Picture = $"~/Content/Images/{fileName}";
+                    product.Picture = $"/Content/Images/{fileName}";
                 }
-
+                product.CreateDateTime = DateTime.Now;
                 _db.Products.Add(product);
                 await _db.SaveChangesAsync().ConfigureAwait(false);
                 return RedirectToAction("Index");

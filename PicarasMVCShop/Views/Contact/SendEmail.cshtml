@@ -2,7 +2,7 @@
 <div class="container">
     <h2 class="text-center horizontal-line">Formulario de Contacto</h2>
 </div>
-@using (Html.BeginForm("SendData", "Contact", FormMethod.Post, new{ onsubmit = "return checkForm(this);" }))
+@using (Html.BeginForm("SendData", "Contact", FormMethod.Post))
 {
     @Html.ValidationSummary(true)
     <div class="container" style="margin-bottom:40px;">
@@ -40,15 +40,17 @@
             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
-                <div class="checkbox">
-                    @Html.CheckBoxFor(model => model.IsTermsAccepted, new { required = "required"})
-                    <label>Términos y condiciones de <span data-toggle="modal" 
-                                                           data-target="#modalPrivacity"
-                                                           style="text-decoration: underline; color: blue;"
-                                                           >privacidad
-                                                    </span>
-                    </label> 
-                </div>
+            <div class="checkbox">
+                @Html.CheckBoxFor(model => model.IsTermsAccepted)
+                <label>
+                    Términos y condiciones de <span data-toggle="modal"
+                                                    data-target="#modalPrivacity"
+                                                    style="text-decoration: underline; color: blue;">
+                        privacidad
+                    </span>
+                </label>
+                @Html.ValidationMessageFor(model => model.IsTermsAccepted, "", new { @class = "text-danger" })
+            </div>
         </div>
         <div class="form-group">
             <input type="submit" value="Enviar" class="btn btn-primary btn-send" />
@@ -67,18 +69,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script type="text/javascript">
-
-        function checkForm(form)
-        {
-            if (!form.IsTermsAccepted.checked) {
-                alert("Por favor, lea y acepte los términos y condiciones de privacidad");
-                form.terms.focus();
-                return false;
-            }
-            return true;
-        }
-
-    </script>
+    </div>    
 }

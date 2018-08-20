@@ -45,11 +45,21 @@
     <script src="~/Scripts/QuantityScript.js"></script>
     <script src="~/Scripts/AddtoCart.js"></script>
     <script type="text/javascript">
-    $(".is-hoverable").hover(function () {
+        $(".is-hoverable").hover(function () {
             $("#dropdown-menu4", this).css("display", "block");
         },
-        function() {
-            $("#dropdown-menu4", this).css("display", "none");
+            function () {
+                $("#dropdown-menu4", this).css("display", "none");
+            });
+    </script>
+    <script type="text/javascript">
+        $(".navbar-toggle").on("click", function () {
+            if (!$('#myNavbar').is(':visible')) {
+                $("#myNavbar").css("display", "flex");
+            }
+            else {
+                $("#myNavbar").css("display", "none");
+            }
         });
     </script>
 </body>

@@ -13,96 +13,98 @@
         <div class="body-container">
             <div class="container">
                 <h2 class="text-center horizontal-line">Estado de Carro de Compra</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Artículo</th>
-                            <th>Cantidad</th>
-                            <th>Talla</th>
-                            <th>Precio</th>
-                            <th>Eliminar</th>
-                            <th>Modificar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                {
-                    var totalPrice = item.Product.Price * item.ShoppingCart.Quantity;
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td>@item.Product.Name</td>
-                                <td class="qa">@item.ShoppingCart.Quantity</td>
-                                <td class="size">@item.ShoppingCart.Size</td>
-                                <td>@totalPrice</td>
-                                <td class="pc"><button class="btn btn-danger remove-to-cart" id="@item.Product.ProductId">Eliminar</button></td>
-                                <td><button class="btn btn-warning edit-to-cart" id="@item.Product.ProductId" data-toggle="modal" data-target="#myModal">Editar Cantidad</button></td>
+                                <th>Artículo</th>
+                                <th>Cantidad</th>
+                                <th>Talla</th>
+                                <th>Precio</th>
+                                <th>Eliminar</th>
+                                <th>Modificar</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-                <div class="row" style="border: 1px solid #ddd; padding: 10px;">
-                    <h4 style="margin-bottom: 20px;">Datos del Pedido</h4>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            @Html.Label("Transport", "Elige Transporte")
-                            <select class="form-control transports" style="width: 50%">
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                var totalPrice = item.Product.Price * item.ShoppingCart.Quantity;
+                                <tr>
+                                    <td>@item.Product.Name</td>
+                                    <td class="qa">@item.ShoppingCart.Quantity</td>
+                                    <td class="size">@item.ShoppingCart.Size</td>
+                                    <td>@totalPrice</td>
+                                    <td class="pc"><button class="btn btn-danger remove-to-cart" id="@item.Product.ProductId">Eliminar</button></td>
+                                    <td><button class="btn btn-warning edit-to-cart" id="@item.Product.ProductId" data-toggle="modal" data-target="#myModal">Editar Cantidad</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    </div>
+                    <div class="row" style="border: 1px solid #ddd; padding: 10px;">
+                        <h4 style="margin-bottom: 20px;">Datos del Pedido</h4>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                @Html.Label("Transport", "Elige Transporte")
+                                <select class="form-control transports" style="width: 50%">
 
-                                @{
-                                    var agentTransports = Model.FirstOrDefault()?.AgentTransport.OrderBy(x => x.Price);
-                                }
-                                @if (agentTransports != null)
-                                {
-                                    foreach (var item in agentTransports)
-                                    {
-                                        <option value="@item.Price">
-                                            @item.AgentName - @item.Price
-                                        </option>
+                                    @{
+                                        var agentTransports = Model.FirstOrDefault()?.AgentTransport.OrderBy(x => x.Price);
                                     }
-                                }
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group payment-radio">
-                            @Html.Label("Payment", "Elige Tipo de Pago")
-                            <div class="radio">
-                                <label>
-                                    @Html.RadioButton("Payment", "creditCard")Tarjeta de Crédito
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    @Html.RadioButton("Payment", "paypal")Paypal
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    @Html.RadioButton("Payment", "bankTransfer")Transferencia Bancaria
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    @Html.RadioButton("Payment", "onsite")Pago en Tienda
-                                </label>
+                                    @if (agentTransports != null)
+                                    {
+                                        foreach (var item in agentTransports)
+                                        {
+                                            <option value="@item.Price">
+                                                @item.AgentName - @item.Price
+                                            </option>
+                                        }
+                                    }
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="total-amount">
-                            <label style="margin-bottom: 15px;">Total de la Compra</label>
-                            <p><strong>Total en Artículos:</strong> @amountNoIVA€</p>
-                            <p id="transport-price"><strong>Precio Transporte:</strong> 0€</p>
-                            <p id="iva-price"><strong>IVA 21%:</strong> @IVA€</p>
-                            <p id="total-price"><strong>Total a Pagar:</strong> @amount€</p>
+                        <div class="col-md-3">
+                            <div class="form-group payment-radio">
+                                @Html.Label("Payment", "Elige Tipo de Pago")
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButton("Payment", "creditCard")Tarjeta de Crédito
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButton("Payment", "paypal")Paypal
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButton("Payment", "bankTransfer")Transferencia Bancaria
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButton("Payment", "onsite")Pago en Tienda
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="total-amount">
+                                <label style="margin-bottom: 15px;">Total de la Compra</label>
+                                <p><strong>Total en Artículos:</strong> @amountNoIVA€</p>
+                                <p id="transport-price"><strong>Precio Transporte:</strong> 0€</p>
+                                <p id="iva-price"><strong>IVA 21%:</strong> @IVA€</p>
+                                <p id="total-price"><strong>Total a Pagar:</strong> @amount€</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="form-group" style="margin-top: 10px;">
-                    <button class="btn btn-details finish-shopping">Finalizar Compra</button>
+                    <div class="col-md-1"></div>
+                    <div class="form-group" style="margin-top: 10px;">
+                        <button class="btn btn-details finish-shopping">Finalizar Compra</button>
+                    </div>
                 </div>
             </div>
-        </div>
         <!-- Modal -->
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog" role="document">

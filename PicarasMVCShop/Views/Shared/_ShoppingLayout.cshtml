@@ -127,5 +127,15 @@
             }
         });
     </script>
+    <script type="text/javascript">
+        $(".navbar-toggle").on("click", function () {
+            if (!$('#myNavbar').is(':visible')) {
+                $("#myNavbar").css("display", "flex");
+            }
+            else {
+                $("#myNavbar").css("display", "none");
+            }
+        });
+    </script>
 </body>
 </html>

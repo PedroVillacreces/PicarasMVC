@@ -399,3 +399,51 @@ h1, h2, h3, h4, input, button, a, li, p, label {
 .dropdown-menu:hover .dropdown-content {
     display: block;
 }*/
+
+.dropdown-trigger a {
+    position: relative;
+    display: block;
+    padding: 15px 15px;
+    color: #777;
+}
+
+@media (max-width: 675px) {
+    .social-icons{
+        display:none;
+    }
+    .shopping-cart-wrapper {
+        font-size: 0.75em;
+        margin: 5px 0 0 5px;
+    }
+    .search-field{
+        margin-right:20px;
+    }
+    .search-box{
+        font-size:0.75em;    
+    }
+    .item-counter{
+        font-size:1em !important;
+    }
+    .search-input{
+        font-size:1em !important;
+    }
+
+    .logo img {
+        width: 350px;
+        height: 250px;
+    }
+    #dropdown-menu4{
+        min-width:100px !important;
+    }
+
+    .dropdown-trigger button{
+        width:100px;
+    }
+
+    .personal-data, .deliveries, .address, .delete-user{
+        margin-left:5px;
+    }
+    .dropdown-trigger a {      
+        padding: 10px 15px;
+    }
+}

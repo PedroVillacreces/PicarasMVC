@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Picaras Inicio</title>
-    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -43,22 +42,32 @@
         @Html.Action("Slider", "Home")
     </div>
 
-<div class="body-content">
-    @RenderBody()
-</div>
+    <div class="body-content">
+        @RenderBody()
+    </div>
 
-<footer class="navbar navbar-inverse footer">
-    @Html.Action("Footer", "Home")
-</footer>
+    <footer class="navbar navbar-inverse footer">
+        @Html.Action("Footer", "Home")
+    </footer>
 
 
-<script type="text/javascript">
-    $(".is-hoverable").hover(function () {
+    <script type="text/javascript">
+        $(".is-hoverable").hover(function () {
             $("#dropdown-menu4", this).css("display", "block");
         },
-        function() {
-            $("#dropdown-menu4", this).css("display", "none");
+            function () {
+                $("#dropdown-menu4", this).css("display", "none");
+            });
+    </script>
+    <script type="text/javascript">
+        $(".navbar-toggle").on("click", function () {
+            if (!$('#myNavbar').is(':visible')) {
+                $("#myNavbar").css("display", "flex");
+            }
+            else {
+                $("#myNavbar").css("display", "none");
+            }
         });
-</script>
+    </script>
 </body>
 </html>
